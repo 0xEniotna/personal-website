@@ -39,64 +39,81 @@ const pageTitle = post.seoTitle ?? post.title;
   modifiedTime={post.publishedAt}
   jsonLd={buildBlogPostingSchema(post)}
 >
-  <article class="section-card reveal max-w-4xl p-6 md:p-10">
-    <p class="label-bracket text-xs text-accent">Insight</p>
-    <h1 class="mt-2 text-4xl font-semibold leading-tight text-ink md:text-5xl">{post.title}</h1>
-    <p class="mt-3 text-sm text-ink-soft">
-      Published {new Date(post.publishedAt).toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}
-    </p>
+  <!-- Breadcrumb -->
+  <nav class="reveal-blur mb-4 flex items-center gap-2 text-sm text-ink-soft" style="--d: 0" aria-label="Breadcrumb">
+    <a href="/writings" class="link-animate hover:text-ink">Writings</a>
+    <span aria-hidden="true">/</span>
+    <span class="text-ink">{post.title}</span>
+  </nav>
 
-    {post.coverImage && (
-      <div class="mt-6 overflow-hidden rounded-2xl border border-line/70">
-        {localImage ? (
-          <Image
-            src={localImage}
-            alt={`Cover image for ${post.title}`}
-            width={1200}
-            height={675}
-            class="h-auto w-full object-cover"
-          />
-        ) : (
-          <img
-            src={post.coverImage}
-            alt={`Cover image for ${post.title}`}
-            width="1200"
-            height="675"
-            loading="lazy"
-            decoding="async"
-            class="h-auto w-full object-cover"
-          />
-        )}
-      </div>
-    )}
+  <article class="page-hero reveal max-w-4xl">
+    <div class="page-hero-content">
+      <p class="label-bracket reveal-blur text-xs text-accent" style="--d: 0">Insight</p>
+      <h1 class="reveal-blur mt-3 text-4xl font-semibold leading-tight text-ink md:text-5xl" style="--d: 1">{post.title}</h1>
+      <p class="reveal-blur mt-3 text-sm text-ink-soft" style="--d: 2">
+        Published {new Date(post.publishedAt).toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}
+      </p>
+    </div>
+  </article>
 
-    <section class="mt-8 space-y-4">
+  {post.coverImage && (
+    <div class="reveal-scale mt-6 overflow-hidden rounded-2xl border border-line/70" style="--d: 1">
+      {localImage ? (
+        <Image
+          src={localImage}
+          alt={`Cover image for ${post.title}`}
+          width={1200}
+          height={675}
+          class="h-auto w-full object-cover"
+        />
+      ) : (
+        <img
+          src={post.coverImage}
+          alt={`Cover image for ${post.title}`}
+          width="1200"
+          height="675"
+          loading="lazy"
+          decoding="async"
+          class="h-auto w-full object-cover"
+        />
+      )}
+    </div>
+  )}
+
+  <div class="reveal mt-8 grid max-w-4xl gap-6 md:grid-cols-[1fr_0.4fr]" style="--d: 2">
+    <section class="section-card p-6 md:p-8">
       <h2 class="text-2xl font-semibold text-ink">Summary</h2>
-      <p class="text-base leading-relaxed text-ink-soft">{summary}</p>
+      <p class="mt-4 text-base leading-relaxed text-ink-soft">{summary}</p>
     </section>
 
     {takeaways.length > 0 && (
-      <section class="mt-8 space-y-4">
+      <section class="section-card p-6 md:p-8">
         <h2 class="text-2xl font-semibold text-ink">Key takeaways</h2>
-        <ul class="space-y-2">
-          {takeaways.map((item) => <li class="text-ink-soft">- {item}</li>)}
+        <ul class="mt-4 space-y-3">
+          {takeaways.map((item, i) => (
+            <li class="reveal-left flex items-start gap-2.5 text-sm text-ink-soft" style={`--d: ${i + 3}`}>
+              <span class="mt-0.5 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-md bg-ink/8 text-xs font-bold text-ink">{i + 1}</span>
+              <span>{item}</span>
+            </li>
+          ))}
         </ul>
       </section>
     )}
+  </div>
 
-    <section class="mt-10 flex flex-wrap gap-3">
-      <a
-        href={post.url}
-        target="_blank"
-        rel="noreferrer"
-        data-track-event="click_substack"
-        class="interactive-btn btn-primary px-5 py-2.5 text-sm"
-      >
-        Read full article on Substack
-      </a>
-      <a href="/writings" class="interactive-btn btn-secondary px-5 py-2.5 text-sm">
-        Back to Writings
-      </a>
-    </section>
-  </article>
+  <section class="reveal mt-8 flex max-w-4xl flex-wrap gap-3" style="--d: 3">
+    <a
+      href={post.url}
+      target="_blank"
+      rel="noreferrer"
+      data-track-event="click_substack"
+      class="interactive-btn btn-primary px-5 py-2.5 text-sm"
+      data-magnetic
+    >
+      Read full article on Substack
+    </a>
+    <a href="/writings" class="interactive-btn btn-secondary px-5 py-2.5 text-sm" data-magnetic>
+      Back to Writings
+    </a>
+  </section>
 </BaseLayout>

@@ -11,20 +11,31 @@ import { siteConfig } from "../lib/site";
   description="About Antoine Mecker and the Mecker Capital platform."
   jsonLd={buildPersonSchema()}
 >
-  <article class="section-card content-rich reveal max-w-4xl p-6 md:p-10">
-    <h1 class="text-4xl font-semibold text-ink md:text-5xl">About Antoine Mecker</h1>
+  <section class="page-hero reveal mb-8">
+    <div class="page-hero-content">
+      <p class="label-bracket reveal-blur text-xs text-accent" style="--d: 0">About</p>
+      <h1 class="reveal-blur mt-3 text-5xl font-semibold leading-[0.96] tracking-[-0.04em] md:text-7xl" style="--d: 1">
+        Antoine Mecker
+      </h1>
+      <p class="reveal-blur mt-5 max-w-2xl text-lg leading-relaxed text-ink-soft md:text-xl" style="--d: 2">
+        Crypto engineer turned macro-focused investor. Building research and execution systems.
+      </p>
+    </div>
+  </section>
+
+  <article class="section-card content-rich reveal max-w-4xl p-6 md:p-10" style="--d: 1">
     <AboutContent />
 
     <section class="mt-8 border-t border-line/75 pt-6">
       <h2 class="text-2xl font-semibold text-ink">Connect and Explore</h2>
       <div class="mt-4 flex flex-wrap gap-3">
-        <a class="interactive-btn btn-secondary px-4 py-2 text-sm" href="/writings">
+        <a class="interactive-btn btn-secondary px-4 py-2 text-sm" href="/writings" data-magnetic>
           Read Writings
         </a>
-        <a class="interactive-btn btn-secondary px-4 py-2 text-sm" href="/projects">
+        <a class="interactive-btn btn-secondary px-4 py-2 text-sm" href="/projects" data-magnetic>
           View Projects
         </a>
-        <a class="interactive-btn btn-secondary px-4 py-2 text-sm" href="/portfolio">
+        <a class="interactive-btn btn-secondary px-4 py-2 text-sm" href="/portfolio" data-magnetic>
           Portfolio Pillars
         </a>
       </div>

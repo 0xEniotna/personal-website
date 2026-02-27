@@ -45,7 +45,7 @@ const { title, description, path, heroClass, robots, jsonLd, ogType, publishedTi
     <Analytics />
     <script is:inline>
       (() => {
-        const SEL = ".reveal, .reveal-scale, .reveal-blur";
+        const SEL = ".reveal, .reveal-scale, .reveal-blur, .reveal-left, .reveal-right";
 
         function setupReveals() {
           const reveals = document.querySelectorAll(SEL);
@@ -117,10 +117,44 @@ const { title, description, path, heroClass, robots, jsonLd, ogType, publishedTi
           });
         }
 
+        function setupMagnetic() {
+          const els = document.querySelectorAll("[data-magnetic]");
+          if (els.length === 0 || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+          for (const el of els) {
+            el.addEventListener("mousemove", (e) => {
+              const rect = el.getBoundingClientRect();
+              const x = e.clientX - rect.left - rect.width / 2;
+              const y = e.clientY - rect.top - rect.height / 2;
+              el.style.transform = "translate(" + (x * 0.18) + "px, " + (y * 0.18) + "px)";
+            });
+            el.addEventListener("mouseleave", () => {
+              el.style.transform = "";
+            });
+          }
+        }
+
+        function setupTilt() {
+          const els = document.querySelectorAll("[data-tilt]");
+          if (els.length === 0 || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+          for (const el of els) {
+            el.addEventListener("mousemove", (e) => {
+              const rect = el.getBoundingClientRect();
+              const x = (e.clientX - rect.left) / rect.width - 0.5;
+              const y = (e.clientY - rect.top) / rect.height - 0.5;
+              el.style.transform = "perspective(600px) rotateY(" + (x * 6) + "deg) rotateX(" + (-y * 6) + "deg) translateY(-4px)";
+            });
+            el.addEventListener("mouseleave", () => {
+              el.style.transform = "";
+            });
+          }
+        }
+
         function init() {
           setupReveals();
           setupCounters();
           setupTracking();
+          setupMagnetic();
+          setupTilt();
         }
 
         if (document.readyState === "loading") {
@@ -132,6 +166,8 @@ const { title, description, path, heroClass, robots, jsonLd, ogType, publishedTi
         document.addEventListener("astro:page-load", () => {
           setupReveals();
           setupCounters();
+          setupMagnetic();
+          setupTilt();
         });
       })();
     </script>

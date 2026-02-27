@@ -1137,6 +1137,398 @@ summary:focus-visible {
   transform: translateY(0);
 }
 
+/* Slide from left */
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-40px);
+  transition:
+    opacity 700ms var(--ease-out-expo),
+    transform 700ms var(--ease-out-expo);
+  transition-delay: calc(var(--d, 0) * 100ms);
+}
+
+.reveal-left.is-visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Slide from right */
+.reveal-right {
+  opacity: 0;
+  transform: translateX(40px);
+  transition:
+    opacity 700ms var(--ease-out-expo),
+    transform 700ms var(--ease-out-expo);
+  transition-delay: calc(var(--d, 0) * 100ms);
+}
+
+.reveal-right.is-visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ─── Allocation bar animation ─── */
+.alloc-bar-track {
+  position: relative;
+  height: 6px;
+  border-radius: 999px;
+  background: rgba(54, 69, 79, 0.1);
+  overflow: hidden;
+}
+
+.alloc-bar-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #36454f 0%, #708090 100%);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 1200ms var(--ease-out-expo);
+  transition-delay: calc(var(--d, 0) * 100ms + 300ms);
+}
+
+.is-visible .alloc-bar-fill {
+  transform: scaleX(1);
+}
+
+/* ─── Allocation overview bar ─── */
+.alloc-overview {
+  display: flex;
+  height: 8px;
+  border-radius: 999px;
+  overflow: hidden;
+  background: rgba(54, 69, 79, 0.08);
+}
+
+.alloc-overview-seg {
+  height: 100%;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 900ms var(--ease-out-expo);
+}
+
+.is-visible .alloc-overview-seg {
+  transform: scaleX(1);
+}
+
+/* ─── Card number badge ─── */
+.card-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.2rem;
+  height: 2.2rem;
+  border-radius: 0.6rem;
+  border: 1px solid color-mix(in srgb, var(--line) 88%, transparent 12%);
+  background: rgba(54, 69, 79, 0.06);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--ink);
+  letter-spacing: -0.02em;
+  transition: background-color 400ms ease, border-color 400ms ease, transform 400ms var(--ease-out-expo);
+}
+
+.section-card:hover .card-number {
+  background: rgba(54, 69, 79, 0.14);
+  border-color: color-mix(in srgb, var(--accent) 52%, transparent 48%);
+  transform: scale(1.08);
+}
+
+/* ─── Stats pill ─── */
+.stat-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 999px;
+  border: 1px solid color-mix(in srgb, var(--line) 78%, transparent 22%);
+  background: rgba(255, 255, 255, 0.82);
+  padding: 0.5rem 1rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--ink);
+  transition: transform 400ms var(--ease-out-expo), box-shadow 400ms ease;
+}
+
+.stat-pill:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(54, 69, 79, 0.12);
+}
+
+.stat-pill-value {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+/* ─── Project enhanced card ─── */
+.project-card-enhanced {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid color-mix(in srgb, var(--line) 88%, transparent 12%);
+  border-radius: 1.1rem;
+  background: linear-gradient(165deg, rgba(255, 255, 255, 0.96) 0%, rgba(237, 240, 243, 0.94) 100%);
+  padding: clamp(1.25rem, 2vw, 1.75rem);
+  color: var(--ink);
+  box-shadow:
+    0 14px 28px rgba(54, 69, 79, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  transition:
+    transform 500ms var(--ease-out-expo),
+    box-shadow 500ms var(--ease-out-expo),
+    border-color 500ms ease;
+}
+
+.project-card-enhanced::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(112, 128, 144, 0.05) 0%, transparent 50%);
+  opacity: 0;
+  transition: opacity 500ms ease;
+}
+
+.project-card-enhanced:hover {
+  transform: translateY(-6px);
+  box-shadow:
+    0 22px 44px rgba(54, 69, 79, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.95);
+  border-color: color-mix(in srgb, var(--accent) 52%, transparent 48%);
+}
+
+.project-card-enhanced:hover::before {
+  opacity: 1;
+}
+
+.project-card-arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.4rem;
+  height: 2.4rem;
+  border-radius: 999px;
+  border: 1px solid color-mix(in srgb, var(--line) 82%, transparent 18%);
+  background: rgba(255, 255, 255, 0.7);
+  font-size: 1.1rem;
+  color: var(--ink);
+  flex-shrink: 0;
+  transition:
+    transform 500ms var(--ease-out-expo),
+    background-color 500ms ease,
+    border-color 500ms ease;
+}
+
+.project-card-enhanced:hover .project-card-arrow {
+  transform: translate(3px, -3px) scale(1.06);
+  background: rgba(54, 69, 79, 0.1);
+  border-color: color-mix(in srgb, var(--accent) 58%, transparent 42%);
+}
+
+.project-card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-top: auto;
+  padding-top: 1rem;
+}
+
+.project-card-tag {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 0.5rem;
+  padding: 0.22rem 0.52rem;
+  font-size: 0.62rem;
+  font-weight: 650;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  border: 1px solid color-mix(in srgb, var(--line) 76%, transparent 24%);
+  background: rgba(255, 255, 255, 0.7);
+  color: var(--ink-soft);
+  transition: background-color 400ms ease, color 400ms ease;
+}
+
+.project-card-enhanced:hover .project-card-tag {
+  background: rgba(54, 69, 79, 0.08);
+  color: var(--ink);
+}
+
+/* ─── Portfolio card enhanced ─── */
+.portfolio-card {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--line) 88%, transparent 12%);
+  border-radius: 1.1rem;
+  background: linear-gradient(165deg, rgba(255, 255, 255, 0.96) 0%, rgba(237, 240, 243, 0.94) 100%);
+  padding: clamp(1.25rem, 2vw, 1.75rem);
+  box-shadow:
+    0 14px 28px rgba(54, 69, 79, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  transition:
+    transform 500ms var(--ease-out-expo),
+    box-shadow 500ms var(--ease-out-expo),
+    border-color 500ms ease;
+}
+
+.portfolio-card::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 40%;
+  height: 40%;
+  pointer-events: none;
+  background: radial-gradient(circle at 100% 0%, rgba(112, 128, 144, 0.1) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 500ms ease;
+}
+
+.portfolio-card:hover {
+  transform: translateY(-6px);
+  box-shadow:
+    0 22px 44px rgba(54, 69, 79, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.95);
+  border-color: color-mix(in srgb, var(--accent) 52%, transparent 48%);
+}
+
+.portfolio-card:hover::after {
+  opacity: 1;
+}
+
+.portfolio-card:hover .card-number {
+  background: rgba(54, 69, 79, 0.14);
+  border-color: color-mix(in srgb, var(--accent) 52%, transparent 48%);
+  transform: scale(1.08);
+}
+
+/* ─── Page hero (shared) ─── */
+.page-hero {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--line) 82%, transparent 18%);
+  border-radius: 1.2rem;
+  background:
+    radial-gradient(circle at 24% 88%, rgba(255, 255, 255, 0.92) 0%, rgba(211, 211, 211, 0.86) 38%, rgba(112, 128, 144, 0.5) 74%, #708090 100%),
+    linear-gradient(130deg, #f3f3f3 0%, #d3d3d3 46%, #708090 100%);
+  padding: clamp(1.5rem, 3vw, 2.5rem);
+  color: var(--ink);
+  box-shadow:
+    0 22px 50px rgba(54, 69, 79, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.75);
+}
+
+.page-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(96deg, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0.18) 36%, rgba(255, 255, 255, 0) 66%);
+}
+
+.page-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(rgba(54, 69, 79, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(54, 69, 79, 0.06) 1px, transparent 1px);
+  background-size: 32px 32px;
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), transparent 80%);
+}
+
+.page-hero-content {
+  position: relative;
+  z-index: 1;
+}
+
+/* ─── Floating animation ─── */
+@keyframes float-gentle {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+.float-gentle {
+  animation: float-gentle 4s var(--ease-in-out) infinite;
+}
+
+/* ─── Shine sweep on hover ─── */
+.shine-hover {
+  position: relative;
+  overflow: hidden;
+}
+
+.shine-hover::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -75%;
+  width: 50%;
+  height: 200%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.3) 50%,
+    transparent 100%
+  );
+  transform: skewX(-15deg);
+  transition: left 600ms var(--ease-out-expo);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.shine-hover:hover::before {
+  left: 125%;
+}
+
+/* ─── Magnetic button effect via data attribute ─── */
+[data-magnetic] {
+  transition:
+    transform 300ms var(--ease-out-expo),
+    box-shadow 300ms var(--ease-out-expo),
+    background-color 300ms ease,
+    color 300ms ease,
+    border-color 300ms ease;
+}
+
+/* ─── Tilt card effect ─── */
+[data-tilt] {
+  transform-style: preserve-3d;
+  transition: transform 400ms var(--ease-out-expo);
+}
+
+/* ─── Projects page CTA ─── */
+.projects-cta {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--line) 82%, transparent 18%);
+  border-radius: 1.1rem;
+  background:
+    radial-gradient(circle at 80% 30%, rgba(112, 128, 144, 0.18) 0%, transparent 50%),
+    linear-gradient(170deg, #36454f 0%, #2f3c45 100%);
+  padding: clamp(1.5rem, 3vw, 2.5rem);
+  color: #ffffff;
+  box-shadow:
+    0 18px 38px rgba(9, 16, 20, 0.32),
+    inset 0 1px 0 rgba(255, 255, 255, 0.14);
+}
+
+.projects-cta::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 28px 28px;
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), transparent 80%);
+}
+
 /* ─── Marquee ─── */
 @keyframes marquee {
   0% {
@@ -1216,6 +1608,8 @@ summary:focus-visible {
   .reveal,
   .reveal-scale,
   .reveal-blur,
+  .reveal-left,
+  .reveal-right,
   .section-card,
   .feature-tile,
   .feature-overlay,
@@ -1228,12 +1622,27 @@ summary:focus-visible {
   .project-skeleton-shimmer,
   .footer-link,
   .link-animate,
-  .marquee-track {
+  .marquee-track,
+  .portfolio-card,
+  .project-card-enhanced,
+  .project-card-arrow,
+  .card-number,
+  .stat-pill,
+  .alloc-bar-fill,
+  .alloc-overview-seg,
+  .float-gentle,
+  [data-magnetic],
+  [data-tilt] {
     animation: none !important;
     transition: none !important;
     transform: none !important;
     filter: none !important;
     opacity: 1 !important;
+  }
+
+  .alloc-bar-fill,
+  .alloc-overview-seg {
+    transform: scaleX(1) !important;
   }
 
   ::view-transition-old(root),
