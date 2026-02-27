@@ -22,24 +22,30 @@ const hasMore = result.posts.length > perPage;
     about: ["Finance", "Macroeconomics", "Geopolitics", "Digital Assets"],
   })}
 >
-  <section class="section-card reveal max-w-5xl p-6 md:p-9">
-    <p class="label-bracket text-xs text-accent">Substack</p>
-    <div class="mt-2 flex flex-col gap-4 md:flex-row md:items-start md:justify-between md:gap-6">
-      <div>
-        <h1 class="text-4xl font-semibold md:text-5xl">Writings and market notes</h1>
-        <p class="mt-5 max-w-3xl text-lg leading-relaxed text-ink-soft">
-          Essays and research notes on macro, finance, geopolitics, and market structure.
-        </p>
+  <section class="page-hero reveal">
+    <div class="page-hero-content">
+      <p class="label-bracket reveal-blur text-xs text-accent" style="--d: 0">Substack</p>
+      <div class="mt-3 flex flex-col gap-5 md:flex-row md:items-end md:justify-between md:gap-6">
+        <div>
+          <h1 class="reveal-blur text-5xl font-semibold leading-[0.96] tracking-[-0.04em] md:text-7xl" style="--d: 1">
+            Writings and market notes
+          </h1>
+          <p class="reveal-blur mt-5 max-w-3xl text-lg leading-relaxed text-ink-soft md:text-xl" style="--d: 2">
+            Essays and research notes on macro, finance, geopolitics, and market structure.
+          </p>
+        </div>
+        <a
+          href={siteConfig.substackUrl}
+          target="_blank"
+          rel="noreferrer"
+          class="reveal-blur interactive-btn btn-primary w-full justify-center px-5 py-3 text-sm md:w-auto md:flex-none"
+          style="--d: 3"
+          data-track-event="click_substack"
+          data-magnetic
+        >
+          Follow on Substack
+        </a>
       </div>
-      <a
-        href={siteConfig.substackUrl}
-        target="_blank"
-        rel="noreferrer"
-        class="interactive-btn btn-primary w-full justify-center px-5 py-3 text-sm md:mt-1 md:w-auto md:flex-none"
-        data-track-event="click_substack"
-      >
-        Follow on Substack
-      </a>
     </div>
   </section>
 
@@ -58,6 +64,7 @@ const hasMore = result.posts.length > perPage;
         target="_blank"
         rel="noreferrer"
         data-track-event="click_substack"
+        data-magnetic
       >
         Visit Substack directly
       </a>
@@ -65,14 +72,14 @@ const hasMore = result.posts.length > perPage;
   )}
 
   {posts.length > 0 && (
-    <section class="mt-12 grid gap-5 md:grid-cols-2">
+    <section class="mt-10 grid gap-5 md:grid-cols-2">
       {posts.map((post) => <PostCard post={post} />)}
     </section>
   )}
 
   <section class="reveal mt-10 flex flex-wrap items-center gap-3" style="--d: 1">
     {hasMore && (
-      <a class="interactive-btn btn-secondary px-5 py-2.5 text-sm" href="/writings/2">
+      <a class="interactive-btn btn-secondary px-5 py-2.5 text-sm" href="/writings/2" data-magnetic>
         Next page
       </a>
     )}

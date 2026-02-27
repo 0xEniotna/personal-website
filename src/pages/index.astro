@@ -35,8 +35,8 @@ const founded = "2026";
           Mecker Capital builds thesis-driven market research and execution systems, combining macro, finance, and technology into one operating platform.
         </p>
         <div class="reveal-blur mt-7 flex flex-wrap gap-3" style="--d: 3">
-          <a href="/projects" class="interactive-btn btn-primary px-5 py-3 text-sm">View Projects</a>
-          <a href={siteConfig.substackUrl} target="_blank" rel="noreferrer" data-track-event="click_substack" class="interactive-btn btn-dark px-5 py-3 text-sm">
+          <a href="/projects" class="interactive-btn btn-primary px-5 py-3 text-sm" data-magnetic>View Projects</a>
+          <a href={siteConfig.substackUrl} target="_blank" rel="noreferrer" data-track-event="click_substack" class="interactive-btn btn-dark px-5 py-3 text-sm" data-magnetic>
             Follow Writings
           </a>
         </div>
@@ -182,7 +182,7 @@ const founded = "2026";
 
     <div class="mt-8 grid gap-4 md:grid-cols-3">
       {portfolioHighlights.map((bucket, i) => (
-        <article class="panel-soft reveal p-5" style={`--d: ${i + 3}`}>
+        <article class="panel-soft reveal p-5" style={`--d: ${i + 3}`} data-tilt>
           <p class="label-bracket text-xs text-ink-soft">{bucket.label}</p>
           <p class="mt-4 text-3xl font-semibold tracking-[-0.03em] text-ink">{bucket.targetRange ?? "Flexible"}</p>
           <p class="mt-3 text-sm leading-relaxed text-ink-soft">{bucket.thesis}</p>
@@ -218,9 +218,9 @@ const founded = "2026";
           challenge assumptions, and allocate capital with discipline.
         </p>
         <div class="mt-6 flex flex-wrap gap-3">
-          <a href="/about" class="interactive-btn btn-primary px-4 py-2 text-sm">Read Bio</a>
-          <a href={siteConfig.social.x} target="_blank" rel="noreferrer" class="interactive-btn btn-secondary px-4 py-2 text-sm">X Profile</a>
-          <a href="/writings" class="interactive-btn btn-secondary px-4 py-2 text-sm">Writings</a>
+          <a href="/about" class="interactive-btn btn-primary px-4 py-2 text-sm" data-magnetic>Read Bio</a>
+          <a href={siteConfig.social.x} target="_blank" rel="noreferrer" class="interactive-btn btn-secondary px-4 py-2 text-sm" data-magnetic>X Profile</a>
+          <a href="/writings" class="interactive-btn btn-secondary px-4 py-2 text-sm" data-magnetic>Writings</a>
         </div>
       </article>
     </div>

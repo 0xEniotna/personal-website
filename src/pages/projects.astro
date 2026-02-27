@@ -3,6 +3,10 @@ import ProjectCard from "../components/ProjectCard.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { projectData } from "../lib/content";
 import { buildCollectionPageSchema } from "../lib/seo-schema";
+import { siteConfig } from "../lib/site";
+
+const activeCount = projectData.filter((p) => p.status === "active").length;
+const allTags = [...new Set(projectData.flatMap((p) => p.tags))];
 ---
 
 <BaseLayout
@@ -16,15 +20,80 @@ import { buildCollectionPageSchema } from "../lib/seo-schema";
     about: ["Quantitative Trading", "Market Making", "Statistical Arbitrage", "Crypto Infrastructure"],
   })}
 >
-  <section class="section-card reveal max-w-5xl p-6 md:p-9">
-    <p class="label-bracket text-xs text-accent">Research and execution</p>
-    <h1 class="mt-2 text-4xl font-semibold md:text-5xl">Projects</h1>
-    <p class="mt-5 text-lg leading-relaxed text-ink-soft">
-      Selected initiatives where I convert thesis work into concrete frameworks, screens, and investment tools.
-    </p>
+  <!-- Hero -->
+  <section class="page-hero reveal">
+    <div class="page-hero-content">
+      <div class="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+        <div>
+          <p class="label-bracket reveal-blur text-xs text-accent" style="--d: 0">Research and execution</p>
+          <h1 class="reveal-blur mt-3 text-5xl font-semibold leading-[0.96] tracking-[-0.04em] md:text-7xl" style="--d: 1">
+            Projects
+          </h1>
+          <p class="reveal-blur mt-5 max-w-2xl text-lg leading-relaxed text-ink-soft md:text-xl" style="--d: 2">
+            Selected initiatives where I convert thesis work into concrete frameworks, screens, and investment tools.
+          </p>
+        </div>
+
+        <div class="reveal-blur flex flex-wrap gap-3" style="--d: 3">
+          <div class="stat-pill">
+            <span class="stat-pill-value">{projectData.length}</span>
+            <span>Projects</span>
+          </div>
+          <div class="stat-pill">
+            <span class="stat-pill-value">{activeCount}</span>
+            <span>Active</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tech tags -->
+      <div class="reveal-blur mt-7 flex flex-wrap gap-2" style="--d: 4">
+        {allTags.slice(0, 8).map((tag) => (
+          <span class="chip-light">{tag}</span>
+        ))}
+      </div>
+    </div>
   </section>
 
-  <section class="mt-12 grid gap-5 md:grid-cols-2">
-    {projectData.map((project) => <ProjectCard project={project} />)}
+  <!-- Project cards -->
+  <section class="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+    {projectData.map((project, index) => (
+      <ProjectCard project={project} index={index} />
+    ))}
+  </section>
+
+  <!-- CTA section -->
+  <section class="projects-cta reveal mt-10" style="--d: 1">
+    <div class="relative z-10 flex flex-col items-center gap-6 text-center md:flex-row md:text-left">
+      <div class="flex-1">
+        <h2 class="reveal-blur text-3xl font-semibold text-white md:text-4xl" style="--d: 2">
+          Interested in the work?
+        </h2>
+        <p class="reveal-blur mt-3 max-w-xl text-base leading-relaxed text-white/75" style="--d: 3">
+          Follow along on Substack for in-depth research updates, or explore the open-source repositories on GitHub.
+        </p>
+      </div>
+      <div class="reveal-blur flex flex-wrap gap-3" style="--d: 4">
+        <a
+          href={siteConfig.substackUrl}
+          target="_blank"
+          rel="noreferrer"
+          class="interactive-btn btn-secondary px-5 py-2.5 text-sm"
+          data-magnetic
+          data-track-event="click_substack"
+        >
+          Follow Substack
+        </a>
+        <a
+          href={siteConfig.social.github}
+          target="_blank"
+          rel="noreferrer"
+          class="interactive-btn btn-secondary px-5 py-2.5 text-sm"
+          data-magnetic
+        >
+          View GitHub
+        </a>
+      </div>
+    </div>
   </section>
 </BaseLayout>

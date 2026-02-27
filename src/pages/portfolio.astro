@@ -3,6 +3,15 @@ import PortfolioCard from "../components/PortfolioCard.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { portfolioData } from "../lib/content";
 import { buildCollectionPageSchema } from "../lib/seo-schema";
+
+const bucketColors = [
+  "#36454f",
+  "#4a6274",
+  "#5e7f99",
+  "#708090",
+  "#8a9baa",
+  "#a3b2bf",
+];
 ---
 
 <BaseLayout
@@ -16,24 +25,80 @@ import { buildCollectionPageSchema } from "../lib/seo-schema";
     about: ["Asset Allocation", "Global Macro", "Equities", "Commodities", "Crypto"],
   })}
 >
-  <section class="section-card reveal max-w-5xl p-6 md:p-9">
-    <p class="label-bracket text-xs text-accent">Allocation framework</p>
-    <h1 class="mt-2 text-4xl font-semibold md:text-5xl">Portfolio pillars</h1>
-    <p class="mt-5 text-lg leading-relaxed text-ink-soft">
-      This page shows high-level thematic allocation ranges and research direction. Position sizing is indicative,
-      non-real-time, and shared only for educational context.
-    </p>
+  <!-- Hero -->
+  <section class="page-hero reveal">
+    <div class="page-hero-content">
+      <p class="label-bracket reveal-blur text-xs text-accent" style="--d: 0">Allocation framework</p>
+      <h1 class="reveal-blur mt-3 text-5xl font-semibold leading-[0.96] tracking-[-0.04em] md:text-7xl" style="--d: 1">
+        Portfolio pillars
+      </h1>
+      <p class="reveal-blur mt-5 max-w-3xl text-lg leading-relaxed text-ink-soft md:text-xl" style="--d: 2">
+        This page shows high-level thematic allocation ranges and research direction. Position sizing is indicative,
+        non-real-time, and shared only for educational context.
+      </p>
+
+      <div class="reveal-blur mt-7 flex flex-wrap gap-3" style="--d: 3">
+        <div class="stat-pill">
+          <span class="stat-pill-value">{portfolioData.length}</span>
+          <span>Allocation Buckets</span>
+        </div>
+        <div class="stat-pill">
+          <span class="stat-pill-value">100%</span>
+          <span>Target Coverage</span>
+        </div>
+        <div class="stat-pill">
+          <span class="stat-pill-value">6</span>
+          <span>Macro Themes</span>
+        </div>
+      </div>
+    </div>
   </section>
 
-  <section class="mt-12 grid gap-5 md:grid-cols-2">
-    {portfolioData.map((bucket) => <PortfolioCard bucket={bucket} />)}
+  <!-- Allocation overview bar -->
+  <section class="reveal mt-8 rounded-xl border border-line/70 bg-white/80 p-5 md:p-6" style="--d: 1">
+    <p class="label-bracket mb-4 text-xs text-ink-soft">Target allocation range</p>
+    <div class="alloc-overview rounded-full">
+      {portfolioData.map((bucket, i) => (
+        <div
+          class="alloc-overview-seg"
+          style={`width: ${parseFloat(bucket.targetRange?.split("-")[1] || "16")}%; background: ${bucketColors[i]}; transition-delay: ${i * 120 + 200}ms;`}
+          title={`${bucket.label}: ${bucket.targetRange}`}
+        />
+      ))}
+    </div>
+    <div class="mt-3 flex flex-wrap gap-x-4 gap-y-1.5">
+      {portfolioData.map((bucket, i) => (
+        <div class="flex items-center gap-1.5 text-xs text-ink-soft">
+          <span
+            class="inline-block h-2.5 w-2.5 rounded-sm"
+            style={`background: ${bucketColors[i]};`}
+          />
+          <span>{bucket.label}</span>
+          <span class="font-semibold text-ink">{bucket.targetRange}</span>
+        </div>
+      ))}
+    </div>
   </section>
 
-  <section class="section-card reveal mt-10 p-6 md:p-7">
-    <h2 class="text-2xl font-semibold">Important notice</h2>
-    <p class="mt-3 leading-relaxed text-ink-soft">
-      For informational purposes only. Not investment advice. No offer or solicitation to buy/sell securities. Past
-      performance does not guarantee future results.
-    </p>
+  <!-- Portfolio cards grid -->
+  <section class="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+    {portfolioData.map((bucket, index) => (
+      <PortfolioCard bucket={bucket} index={index} color={bucketColors[index]} />
+    ))}
+  </section>
+
+  <!-- Important notice -->
+  <section class="projects-cta reveal mt-10 text-center" style="--d: 1">
+    <div class="relative z-10">
+      <h2 class="reveal-blur text-2xl font-semibold text-white md:text-3xl" style="--d: 2">Important notice</h2>
+      <p class="reveal-blur mx-auto mt-4 max-w-2xl leading-relaxed text-white/80" style="--d: 3">
+        For informational purposes only. Not investment advice. No offer or solicitation to buy/sell securities. Past
+        performance does not guarantee future results.
+      </p>
+      <div class="reveal-blur mt-6 flex flex-wrap justify-center gap-3" style="--d: 4">
+        <a href="/projects" class="interactive-btn btn-secondary px-5 py-2.5 text-sm" data-magnetic>View Projects</a>
+        <a href="/writings" class="interactive-btn btn-secondary px-5 py-2.5 text-sm" data-magnetic>Read Writings</a>
+      </div>
+    </div>
   </section>
 </BaseLayout>
