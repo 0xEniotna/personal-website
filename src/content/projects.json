@@ -74,6 +74,13 @@
       "crypto",
       "python"
     ],
+    "showcase": {
+      "mode": "image",
+      "imageSrc": "/media/accordion.svg",
+      "imageAlt": "Accordion stat-arb monitoring dashboard",
+      "caption": "Accordion pair trading monitoring interface",
+      "aspect": "16:9"
+    },
     "link": "https://github.com/0xEniotna/extended-pairs-bot"
   }
 ]

@@ -1,0 +1,365 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675">
+  <defs>
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1e2235"/>
+      <stop offset="100%" stop-color="#141824"/>
+    </linearGradient>
+    <linearGradient id="chartGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#181c2e"/>
+      <stop offset="100%" stop-color="#121622"/>
+    </linearGradient>
+    <linearGradient id="spreadFill" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#4ecdc4" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#4ecdc4" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="tealGlow" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#4ecdc4" stop-opacity="0"/>
+      <stop offset="50%" stop-color="#4ecdc4" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#4ecdc4" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="panelGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="rgba(255,255,255,0.04)"/>
+      <stop offset="100%" stop-color="rgba(255,255,255,0.01)"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="softGlow">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <clipPath id="chartClip">
+      <rect x="60" y="108" width="770" height="380" rx="2"/>
+    </clipPath>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="675" fill="url(#bgGrad)" rx="8"/>
+
+  <!-- Subtle noise texture overlay -->
+  <rect width="1200" height="675" fill="url(#bgGrad)" rx="8" opacity="0.4"/>
+
+  <!-- ═══════════ TOP BAR ═══════════ -->
+  <rect x="0" y="0" width="1200" height="52" fill="#1a1e30" rx="8"/>
+  <rect x="0" y="40" width="1200" height="12" fill="#1a1e30"/>
+  <line x1="0" y1="52" x2="1200" y2="52" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+
+  <!-- Accordion logo/title -->
+  <text x="24" y="33" font-family="SF Mono, Menlo, Monaco, Consolas, monospace" font-size="15" font-weight="700" fill="#e0e4f0" letter-spacing="0.08em">ACCORDION</text>
+  <text x="148" y="33" font-family="SF Mono, Menlo, Monaco, Consolas, monospace" font-size="11" fill="#4a5072" letter-spacing="0.05em">STAT-ARB ENGINE</text>
+
+  <!-- Live indicator -->
+  <rect x="320" y="18" width="72" height="24" rx="4" fill="rgba(78,205,196,0.12)" stroke="#4ecdc4" stroke-width="0.8" stroke-opacity="0.4"/>
+  <circle cx="336" cy="30" r="3.5" fill="#4ecdc4" filter="url(#glow)"/>
+  <text x="346" y="34" font-family="SF Mono, Menlo, Monaco, Consolas, monospace" font-size="10" font-weight="700" fill="#4ecdc4" letter-spacing="0.1em">LIVE</text>
+
+  <!-- Pair info -->
+  <text x="560" y="28" font-family="SF Mono, Menlo, Monaco, Consolas, monospace" font-size="13" font-weight="600" fill="#c8cde0" text-anchor="middle">ETH-PERP</text>
+  <text x="560" y="42" font-family="SF Mono, Menlo, Monaco, Consolas, monospace" font-size="9" fill="#4a5072" text-anchor="middle" letter-spacing="0.15em">/ BTC-PERP</text>
+
+  <!-- Time -->
+  <text x="1176" y="30" font-family="SF Mono, Menlo, Monaco, Consolas, monospace" font-size="11" fill="#4a5072" text-anchor="end">14:23:47 UTC</text>
+  <text x="1176" y="44" font-family="SF Mono, Menlo, Monaco, Consolas, monospace" font-size="9" fill="#3a3f58" text-anchor="end">2026-02-27</text>
+
+  <!-- ═══════════ SIDEBAR PANEL (RIGHT) ═══════════ -->
+  <!-- Z-Score Panel -->
+  <rect x="860" y="66" width="326" height="186" rx="6" fill="url(#panelGrad)" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+
+  <text x="880" y="90" font-family="SF Mono, Menlo, Monaco, Consolas, monospace" font-size="10" fill="#4a5072" letter-spacing="0.12em" font-weight="600">Z-SCORE</text>
+
+  <!-- Current z-score big number -->
+  <text x="880" y="134" font-family="SF Mono, Menlo, Monaco, Consolas, monospace" font-size="42" font-weight="700" fill="#4ecdc4" filter="url(#softGlow)">-1.42</text>
+
+  <!-- Z-score bar -->
+  <rect x="880" y="152" width="306" height="6" rx="3" fill="rgba(255,255,255,0.06)"/>
+  <!-- Fill from center -->
+  <rect x="1033" y="152" width="0" height="6" rx="3" fill="#4ecdc4"/>
+  <!-- Center marker -->
+  <line x1="1033" y1="148" x2="1033" y2="162" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+  <!-- Position on bar (z = -1.42, range -3 to 3, so position) -->
+  <circle cx="961" cy="155" r="5" fill="#4ecdc4" stroke="#1a1e2e" stroke-width="2"/>
+  <!-- Threshold markers -->
+  <line x1="931" y1="149" x2="931" y2="161" stroke="#ff6b6b" stroke-width="1" stroke-opacity="0.5"/>
+  <line x1="1135" y1="149" x2="1135" y2="161" stroke="#ff6b6b" stroke-width="1" stroke-opacity="0.5"/>
+  <text x="931" y="174" font-family="SF Mono, Menlo, Monaco, Consolas, monospace" font-size="8" fill="#ff6b6b" text-anchor="middle" opacity="0.7">-2σ</text>
+  <text x="1135" y="174" font-family="SF Mono, Menlo, Monaco, Consolas, monospace" font-size="8" fill="#ff6b6b" text-anchor="middle" opacity="0.7">+2σ</text>
+  <text x="1033" y="174" font-family="SF Mono, Menlo, Monaco, Consolas, monospace" font-size="8" fill="rgba(255,255,255,0.25)" text-anchor="middle">0</text>
+
+  <!-- Thresholds -->
+  <g font-family="SF Mono, Menlo, Monaco, Consolas, monospace" font-size="10">
+    <text x="880" y="200" fill="#4a5072">Entry</text>
+    <text x="960" y="200" fill="#e0e4f0" font-weight="600">±2.00</text>
+    <text x="1040" y="200" fill="#4a5072">Exit</text>
+    <text x="1100" y="200" fill="#e0e4f0" font-weight="600">±0.50</text>
+  </g>
+  <g font-family="SF Mono, Menlo, Monaco, Consolas, monospace" font-size="10">
+    <text x="880" y="220" fill="#4a5072">Stop</text>
+    <text x="960" y="220" fill="#ff6b6b" font-weight="600">±3.50</text>
+    <text x="1040" y="220" fill="#4a5072">Lookback</text>
+    <text x="1120" y="220" fill="#e0e4f0" font-weight="600">120h</text>
+  </g>
+  <line x1="880" y1="236" x2="1166" y2="236" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+  <text x="880" y="246" font-family="SF Mono, Menlo, Monaco, Consolas, monospace" font-size="8" fill="#3a3f58" letter-spacing="0.08em">MEAN-REVERSION STRATEGY</text>
+
+  <!-- Position Panel -->
+  <rect x="860" y="264" width="326" height="130" rx="6" fill="url(#panelGrad)" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+
+  <text x="880" y="288" font-family="SF Mono, Menlo, Monaco, Consolas, monospace" font-size="10" fill="#4a5072" letter-spacing="0.12em" font-weight="600">ACTIVE POSITION</text>
+
+  <rect x="880" y="300" width="140" height="36" rx="4" fill="rgba(78,205,196,0.08)" stroke="rgba(78,205,196,0.2)" stroke-width="0.8"/>
+  <text x="890" y="314" font-family="SF Mono, Menlo, Monaco, Consolas, monospace" font-size="9" fill="#4ecdc4" font-weight="600">LONG</text>
+  <text x="890" y="328" font-family="SF Mono, Menlo, Monaco, Consolas, monospace" font-size="11" fill="#c8cde0" font-weight="700">ETH-PERP</text>
+
+  <rect x="1030" y="300" width="140" height="36" rx="4" fill="rgba(255,107,107,0.08)" stroke="rgba(255,107,107,0.2)" stroke-width="0.8"/>
+  <text x="1040" y="314" font-family="SF Mono, Menlo, Monaco, Consolas, monospace" font-size="9" fill="#ff6b6b" font-weight="600">SHORT</text>
+  <text x="1040" y="328" font-family="SF Mono, Menlo, Monaco, Consolas, monospace" font-size="11" fill="#c8cde0" font-weight="700">BTC-PERP</text>
+
+  <!-- PnL -->
+  <g font-family="SF Mono, Menlo, Monaco, Consolas, monospace" font-size="10">
+    <text x="880" y="360" fill="#4a5072">Unrealized P&amp;L</text>
+    <text x="1000" y="360" fill="#4ecdc4" font-weight="700" font-size="13">+$1,247.83</text>
+  </g>
+  <g font-family="SF Mono, Menlo, Monaco, Consolas, monospace" font-size="10">
+    <text x="880" y="380" fill="#4a5072">Entry z-score</text>
+    <text x="1000" y="380" fill="#e0e4f0" font-weight="600">-2.14</text>
+    <text x="1070" y="380" fill="#3a3f58">→</text>
+    <text x="1090" y="380" fill="#4ecdc4" font-weight="600">-1.42</text>
+  </g>
+
+  <!-- Signal Log Panel -->
+  <rect x="860" y="406" width="326" height="140" rx="6" fill="url(#panelGrad)" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+
+  <text x="880" y="430" font-family="SF Mono, Menlo, Monaco, Consolas, monospace" font-size="10" fill="#4a5072" letter-spacing="0.12em" font-weight="600">SIGNAL LOG</text>
+
+  <g font-family="SF Mono, Menlo, Monaco, Consolas, monospace" font-size="9.5">
+    <text x="880" y="450" fill="#3a3f58">14:23</text>
+    <text x="920" y="450" fill="#4ecdc4">HOLD</text>
+    <text x="970" y="450" fill="#4a5072">z=-1.42 spread converging</text>
+
+    <text x="880" y="466" fill="#3a3f58">14:18</text>
+    <text x="920" y="466" fill="#4ecdc4">HOLD</text>
+    <text x="970" y="466" fill="#4a5072">z=-1.58 within band</text>
+
+    <text x="880" y="482" fill="#3a3f58">13:47</text>
+    <text x="920" y="482" fill="#e8b84e">ENTRY</text>
+    <text x="970" y="482" fill="#4a5072">z=-2.14 long ETH short BTC</text>
+
+    <text x="880" y="498" fill="#3a3f58">12:31</text>
+    <text x="920" y="498" fill="#7c82a0">EXIT</text>
+    <text x="970" y="498" fill="#4a5072">z=-0.38 prev pos closed</text>
+
+    <text x="880" y="514" fill="#3a3f58">11:05</text>
+    <text x="920" y="514" fill="#4ecdc4">HOLD</text>
+    <text x="970" y="514" fill="#4a5072">z=+0.92 monitoring</text>
+
+    <text x="880" y="530" fill="#3a3f58">10:22</text>
+    <text x="920" y="530" fill="#e8b84e">ENTRY</text>
+    <text x="970" y="530" fill="#4a5072">z=+2.31 short ETH long BTC</text>
+  </g>
+
+  <!-- ═══════════ MAIN CHART AREA ═══════════ -->
+  <rect x="20" y="66" width="826" height="420" rx="6" fill="url(#chartGrad)" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+
+  <!-- Chart header -->
+  <text x="40" y="90" font-family="SF Mono, Menlo, Monaco, Consolas, monospace" font-size="11" fill="#4a5072" letter-spacing="0.12em" font-weight="600">SPREAD</text>
+  <text x="120" y="90" font-family="SF Mono, Menlo, Monaco, Consolas, monospace" font-size="11" fill="#e0e4f0" font-weight="600">ETH/BTC Ratio Residual</text>
+
+  <!-- Time period tabs -->
+  <rect x="628" y="74" width="36" height="22" rx="3" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.08)" stroke-width="0.5"/>
+  <text x="646" y="89" font-family="SF Mono, Menlo, Monaco, Consolas, monospace" font-size="9" fill="#4a5072" text-anchor="middle">1H</text>
+  <rect x="668" y="74" width="36" height="22" rx="3" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.08)" stroke-width="0.5"/>
+  <text x="686" y="89" font-family="SF Mono, Menlo, Monaco, Consolas, monospace" font-size="9" fill="#4a5072" text-anchor="middle">4H</text>
+  <rect x="708" y="74" width="36" height="22" rx="3" fill="rgba(78,205,196,0.15)" stroke="rgba(78,205,196,0.35)" stroke-width="0.8"/>
+  <text x="726" y="89" font-family="SF Mono, Menlo, Monaco, Consolas, monospace" font-size="9" fill="#4ecdc4" text-anchor="middle" font-weight="600">1D</text>
+  <rect x="748" y="74" width="36" height="22" rx="3" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.08)" stroke-width="0.5"/>
+  <text x="766" y="89" font-family="SF Mono, Menlo, Monaco, Consolas, monospace" font-size="9" fill="#4a5072" text-anchor="middle">1W</text>
+  <rect x="788" y="74" width="40" height="22" rx="3" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.08)" stroke-width="0.5"/>
+  <text x="808" y="89" font-family="SF Mono, Menlo, Monaco, Consolas, monospace" font-size="9" fill="#4a5072" text-anchor="middle">ALL</text>
+
+  <!-- Chart grid and content clipped -->
+  <g clip-path="url(#chartClip)">
+    <!-- Horizontal grid lines -->
+    <line x1="60" y1="148" x2="830" y2="148" stroke="rgba(255,255,255,0.04)" stroke-width="0.5"/>
+    <line x1="60" y1="198" x2="830" y2="198" stroke="rgba(255,255,255,0.04)" stroke-width="0.5"/>
+    <line x1="60" y1="248" x2="830" y2="248" stroke="rgba(255,255,255,0.04)" stroke-width="0.5"/>
+    <line x1="60" y1="298" x2="830" y2="298" stroke="rgba(255,255,255,0.04)" stroke-width="0.5"/>
+    <line x1="60" y1="348" x2="830" y2="348" stroke="rgba(255,255,255,0.04)" stroke-width="0.5"/>
+    <line x1="60" y1="398" x2="830" y2="398" stroke="rgba(255,255,255,0.04)" stroke-width="0.5"/>
+    <line x1="60" y1="448" x2="830" y2="448" stroke="rgba(255,255,255,0.04)" stroke-width="0.5"/>
+
+    <!-- Vertical grid lines -->
+    <line x1="157" y1="108" x2="157" y2="488" stroke="rgba(255,255,255,0.03)" stroke-width="0.5"/>
+    <line x1="254" y1="108" x2="254" y2="488" stroke="rgba(255,255,255,0.03)" stroke-width="0.5"/>
+    <line x1="351" y1="108" x2="351" y2="488" stroke="rgba(255,255,255,0.03)" stroke-width="0.5"/>
+    <line x1="448" y1="108" x2="448" y2="488" stroke="rgba(255,255,255,0.03)" stroke-width="0.5"/>
+    <line x1="545" y1="108" x2="545" y2="488" stroke="rgba(255,255,255,0.03)" stroke-width="0.5"/>
+    <line x1="642" y1="108" x2="642" y2="488" stroke="rgba(255,255,255,0.03)" stroke-width="0.5"/>
+    <line x1="739" y1="108" x2="739" y2="488" stroke="rgba(255,255,255,0.03)" stroke-width="0.5"/>
+
+    <!-- Mean line (0) at y=298 -->
+    <line x1="60" y1="298" x2="830" y2="298" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+
+    <!-- +2σ band -->
+    <line x1="60" y1="198" x2="830" y2="198" stroke="#ff6b6b" stroke-width="0.8" stroke-dasharray="6 4" stroke-opacity="0.45"/>
+
+    <!-- -2σ band -->
+    <line x1="60" y1="398" x2="830" y2="398" stroke="#4ecdc4" stroke-width="0.8" stroke-dasharray="6 4" stroke-opacity="0.45"/>
+
+    <!-- +1σ band (subtle) -->
+    <line x1="60" y1="248" x2="830" y2="248" stroke="rgba(255,255,255,0.06)" stroke-width="0.5" stroke-dasharray="3 6"/>
+
+    <!-- -1σ band (subtle) -->
+    <line x1="60" y1="348" x2="830" y2="348" stroke="rgba(255,255,255,0.06)" stroke-width="0.5" stroke-dasharray="3 6"/>
+
+    <!-- Spread fill area (below the line) -->
+    <path d="M60,298 L80,292 L100,280 L120,270 L140,258 L160,245 L180,230 L200,218 L220,205 L240,195 L260,190 L280,196 L300,210 L320,228 L340,250 L360,272 L380,290 L400,305 L420,318 L440,335 L460,355 L480,370 L500,385 L520,395 L540,405 L560,408 L580,400 L600,385 L620,365 L640,342 L660,320 L680,298 L700,282 L720,270 L740,265 L760,275 L780,292 L800,310 L820,330 L830,340 L830,298 L60,298 Z" fill="url(#spreadFill)"/>
+
+    <!-- Main spread line - realistic mean-reverting behavior -->
+    <polyline
+      points="60,298 80,292 100,280 120,270 140,258 160,245 180,230 200,218 220,205 240,195 260,190 280,196 300,210 320,228 340,250 360,272 380,290 400,305 420,318 440,335 460,355 480,370 500,385 520,395 540,405 560,408 580,400 600,385 620,365 640,342 660,320 680,298 700,282 720,270 740,265 760,275 780,292 800,310 820,330"
+      fill="none"
+      stroke="#4ecdc4"
+      stroke-width="2"
+      stroke-linejoin="round"
+      stroke-linecap="round"
+      filter="url(#glow)"
+    />
+
+    <!-- Trade entry/exit markers -->
+    <!-- Entry point 1 (short at +2σ crossover around x=260) -->
+    <circle cx="260" cy="190" r="5" fill="none" stroke="#ff6b6b" stroke-width="1.5" opacity="0.8"/>
+    <circle cx="260" cy="190" r="2" fill="#ff6b6b" opacity="0.9"/>
+
+    <!-- Exit point 1 (around mean at x=380) -->
+    <circle cx="380" cy="290" r="5" fill="none" stroke="#7c82a0" stroke-width="1.5" opacity="0.6"/>
+    <circle cx="380" cy="290" r="2" fill="#7c82a0" opacity="0.7"/>
+
+    <!-- Entry point 2 (long at -2σ crossover around x=540) -->
+    <circle cx="540" cy="405" r="5" fill="none" stroke="#4ecdc4" stroke-width="1.5" opacity="0.8"/>
+    <circle cx="540" cy="405" r="2" fill="#4ecdc4" opacity="0.9"/>
+
+    <!-- Exit point 2 (around mean at x=680) -->
+    <circle cx="680" cy="298" r="5" fill="none" stroke="#7c82a0" stroke-width="1.5" opacity="0.6"/>
+    <circle cx="680" cy="298" r="2" fill="#7c82a0" opacity="0.7"/>
+
+    <!-- Current entry (long at -2σ) not yet exited - dashed vertical -->
+    <line x1="540" y1="405" x2="540" y2="298" stroke="#4ecdc4" stroke-width="0.5" stroke-dasharray="2 3" stroke-opacity="0.3"/>
+
+    <!-- Current position line (last entry) -->
+    <circle cx="820" cy="330" r="4" fill="#4ecdc4" stroke="#141824" stroke-width="2" filter="url(#glow)"/>
+
+    <!-- Crosshair at current point -->
+    <line x1="818" y1="108" x2="818" y2="488" stroke="rgba(78,205,196,0.15)" stroke-width="0.5" stroke-dasharray="3 3"/>
+  </g>
+
+  <!-- Y-axis labels -->
+  <g font-family="SF Mono, Menlo, Monaco, Consolas, monospace" font-size="9" fill="#3a3f58" text-anchor="end">
+    <text x="56" y="152">+3σ</text>
+    <text x="56" y="202" fill="#ff6b6b" opacity="0.6">+2σ</text>
+    <text x="56" y="252">+1σ</text>
+    <text x="56" y="302" fill="#6b7394">0</text>
+    <text x="56" y="352">-1σ</text>
+    <text x="56" y="402" fill="#4ecdc4" opacity="0.6">-2σ</text>
+    <text x="56" y="452">-3σ</text>
+  </g>
+
+  <!-- X-axis time labels -->
+  <g font-family="SF Mono, Menlo, Monaco, Consolas, monospace" font-size="8.5" fill="#3a3f58" text-anchor="middle">
+    <text x="60" y="500">00:00</text>
+    <text x="157" y="500">03:00</text>
+    <text x="254" y="500">06:00</text>
+    <text x="351" y="500">09:00</text>
+    <text x="448" y="500">12:00</text>
+    <text x="545" y="500">15:00</text>
+    <text x="642" y="500">18:00</text>
+    <text x="739" y="500">21:00</text>
+    <text x="830" y="500">NOW</text>
+  </g>
+
+  <!-- Trade annotation labels -->
+  <g font-family="SF Mono, Menlo, Monaco, Consolas, monospace" font-size="8">
+    <text x="260" y="180" fill="#ff6b6b" text-anchor="middle" opacity="0.7" font-weight="600">SHORT</text>
+    <text x="380" y="282" fill="#7c82a0" text-anchor="middle" opacity="0.6" font-weight="600">EXIT</text>
+    <text x="540" y="420" fill="#4ecdc4" text-anchor="middle" opacity="0.7" font-weight="600">LONG</text>
+    <text x="680" y="290" fill="#7c82a0" text-anchor="middle" opacity="0.6" font-weight="600">EXIT</text>
+  </g>
+
+  <!-- ═══════════ BOTTOM STATS BAR ═══════════ -->
+  <rect x="20" y="556" width="1166" height="42" rx="6" fill="url(#panelGrad)" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+
+  <!-- Dividers -->
+  <line x1="253" y1="564" x2="253" y2="590" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+  <line x1="463" y1="564" x2="463" y2="590" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+  <line x1="643" y1="564" x2="643" y2="590" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+  <line x1="843" y1="564" x2="843" y2="590" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+  <line x1="1023" y1="564" x2="1023" y2="590" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+
+  <g font-family="SF Mono, Menlo, Monaco, Consolas, monospace" font-size="10">
+    <!-- Cointegration -->
+    <text x="40" y="574" fill="#4a5072" font-size="8.5" letter-spacing="0.06em">COINT P-VAL</text>
+    <text x="40" y="590" fill="#4ecdc4" font-weight="700" font-size="12">0.003</text>
+
+    <!-- Half-life -->
+    <text x="273" y="574" fill="#4a5072" font-size="8.5" letter-spacing="0.06em">HALF-LIFE</text>
+    <text x="273" y="590" fill="#e0e4f0" font-weight="700" font-size="12">14.2h</text>
+
+    <!-- Sharpe -->
+    <text x="483" y="574" fill="#4a5072" font-size="8.5" letter-spacing="0.06em">SHARPE</text>
+    <text x="483" y="590" fill="#4ecdc4" font-weight="700" font-size="12">1.87</text>
+
+    <!-- Exposure -->
+    <text x="663" y="574" fill="#4a5072" font-size="8.5" letter-spacing="0.06em">EXPOSURE</text>
+    <text x="663" y="590" fill="#e8b84e" font-weight="700" font-size="12">42%</text>
+
+    <!-- Trades -->
+    <text x="863" y="574" fill="#4a5072" font-size="8.5" letter-spacing="0.06em">TRADES (24H)</text>
+    <text x="863" y="590" fill="#e0e4f0" font-weight="700" font-size="12">127</text>
+
+    <!-- Win rate -->
+    <text x="1043" y="574" fill="#4a5072" font-size="8.5" letter-spacing="0.06em">WIN RATE</text>
+    <text x="1043" y="590" fill="#4ecdc4" font-weight="700" font-size="12">68.5%</text>
+  </g>
+
+  <!-- ═══════════ BOTTOM ROW: PAIR METRICS ═══════════ -->
+  <rect x="20" y="608" width="572" height="54" rx="6" fill="url(#panelGrad)" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+
+  <g font-family="SF Mono, Menlo, Monaco, Consolas, monospace" font-size="9.5">
+    <text x="40" y="628" fill="#4a5072" font-size="8" letter-spacing="0.08em">ETH-PERP</text>
+    <text x="130" y="628" fill="#e0e4f0" font-weight="700">$3,247.50</text>
+    <text x="230" y="628" fill="#4ecdc4" font-weight="600" font-size="9">+1.24%</text>
+    <rect x="290" y="618" width="1" height="20" fill="rgba(255,255,255,0.06)"/>
+    <text x="310" y="628" fill="#4a5072" font-size="8" letter-spacing="0.08em">BTC-PERP</text>
+    <text x="400" y="628" fill="#e0e4f0" font-weight="700">$97,842.00</text>
+    <text x="510" y="628" fill="#4ecdc4" font-weight="600" font-size="9">+0.87%</text>
+
+    <text x="40" y="650" fill="#3a3f58" font-size="8">Hedge ratio: 0.0332</text>
+    <text x="200" y="650" fill="#3a3f58" font-size="8">Spread: -0.00147</text>
+    <text x="380" y="650" fill="#3a3f58" font-size="8">Residual std: 0.00103</text>
+  </g>
+
+  <!-- Risk status -->
+  <rect x="604" y="608" width="582" height="54" rx="6" fill="url(#panelGrad)" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+
+  <g font-family="SF Mono, Menlo, Monaco, Consolas, monospace">
+    <text x="624" y="628" fill="#4a5072" font-size="8" letter-spacing="0.08em">RISK STATUS</text>
+    <rect x="720" y="617" width="64" height="18" rx="3" fill="rgba(78,205,196,0.1)" stroke="rgba(78,205,196,0.3)" stroke-width="0.5"/>
+    <text x="752" y="630" fill="#4ecdc4" font-size="9" font-weight="700" text-anchor="middle">NORMAL</text>
+
+    <text x="800" y="628" fill="#4a5072" font-size="8">Kill switch:</text>
+    <text x="875" y="628" fill="#4ecdc4" font-size="9" font-weight="600">OFF</text>
+
+    <text x="920" y="628" fill="#4a5072" font-size="8">Max exposure:</text>
+    <text x="1010" y="628" fill="#e0e4f0" font-size="9" font-weight="600">$50K</text>
+
+    <text x="1060" y="628" fill="#4a5072" font-size="8">Mode:</text>
+    <text x="1100" y="628" fill="#4ecdc4" font-size="9" font-weight="700">REAL</text>
+
+    <text x="624" y="650" fill="#3a3f58" font-size="8">Daily P&amp;L: +$3,412.67</text>
+    <text x="800" y="650" fill="#3a3f58" font-size="8">Drawdown: -2.1%</text>
+    <text x="960" y="650" fill="#3a3f58" font-size="8">Uptime: 14d 7h 23m</text>
+  </g>
+
+  <!-- Subtle scan line effect -->
+  <rect x="20" y="520" width="826" height="1" fill="url(#tealGlow)" opacity="0.15"/>
+</svg>
