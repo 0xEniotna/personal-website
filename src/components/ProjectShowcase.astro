@@ -1,0 +1,65 @@
+---
+import type { ProjectItem } from "../lib/types";
+
+interface Props {
+  project: ProjectItem;
+}
+
+const { project } = Astro.props as Props;
+const showcase = project.showcase;
+const hasImage = showcase?.mode === "image" && Boolean(showcase.imageSrc);
+const aspectRatio = showcase?.aspect === "4:3" ? "4 / 3" : "16 / 9";
+const caption = showcase?.caption;
+const imageAlt = showcase?.imageAlt ?? `${project.title} showcase`;
+---
+
+<figure class="project-showcase-shell">
+  {
+    hasImage ? (
+      <div class="project-showcase-media" style={`aspect-ratio: ${aspectRatio};`}>
+        <img
+          src={showcase?.imageSrc}
+          alt={imageAlt}
+          loading="lazy"
+          decoding="async"
+          class="project-showcase-image"
+        />
+      </div>
+    ) : (
+      <div
+        class="project-showcase-media project-skeleton"
+        style={`aspect-ratio: ${aspectRatio};`}
+        role="img"
+        aria-label={`${project.title} interface placeholder`}
+      >
+        <div class="project-skeleton-shimmer" aria-hidden="true"></div>
+        <div class="project-skeleton-bar project-skeleton-window" aria-hidden="true"></div>
+        <div class="project-skeleton-body" aria-hidden="true">
+          <div class="project-skeleton-nav">
+            <span class="project-skeleton-bar"></span>
+            <span class="project-skeleton-bar"></span>
+            <span class="project-skeleton-bar"></span>
+            <span class="project-skeleton-bar"></span>
+            <span class="project-skeleton-bar"></span>
+          </div>
+          <div class="project-skeleton-main">
+            <div class="project-skeleton-metrics">
+              <span class="project-skeleton-card"></span>
+              <span class="project-skeleton-card"></span>
+              <span class="project-skeleton-card"></span>
+            </div>
+            <div class="project-skeleton-chart"></div>
+            <div class="project-skeleton-lines">
+              <span class="project-skeleton-bar"></span>
+              <span class="project-skeleton-bar"></span>
+              <span class="project-skeleton-bar"></span>
+              <span class="project-skeleton-bar"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    )
+  }
+
+  {caption && <figcaption class="project-showcase-caption">{caption}</figcaption>}
+</figure>

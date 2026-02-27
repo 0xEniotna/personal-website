@@ -1,0 +1,210 @@
+---
+import { siteConfig } from '../lib/site';
+
+const navItems = [
+  { href: '/', label: 'Home' },
+  { href: '/writings', label: 'Writings' },
+  { href: '/portfolio', label: 'Portfolio' },
+  { href: '/projects', label: 'Projects' },
+  { href: '/about', label: 'About' },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<header class="site-header px-4 pt-4 md:px-6">
+  <div class="header-shell mx-auto max-w-[96rem] px-4 py-3 md:px-6">
+    <div class="flex items-center justify-between gap-4">
+      <a href="/" class="flex items-center" aria-label="Mecker Capital home">
+        <span class="header-brand-frame">
+          <img
+            src="/media/black.png"
+            alt="Mecker Capital logo"
+            class="header-brand-logo"
+            loading="eager"
+            decoding="async"
+          />
+        </span>
+      </a>
+
+      <nav aria-label="Primary navigation" class="hidden lg:block">
+        <ul
+          class="flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.08em]"
+        >
+          {
+            navItems.map((item) => {
+              const isActive =
+                currentPath === item.href ||
+                (item.href !== '/' && currentPath.startsWith(item.href));
+              return (
+                <li>
+                  <a
+                    href={item.href}
+                    aria-current={isActive ? 'page' : undefined}
+                    class:list={[
+                      'header-nav-link',
+                      isActive
+                        ? 'header-nav-link-active'
+                        : 'header-nav-link-idle',
+                    ]}
+                  >
+                    {item.label}
+                  </a>
+                </li>
+              );
+            })
+          }
+        </ul>
+      </nav>
+
+      <div class="hidden items-center gap-2 md:flex">
+        <a
+          href={siteConfig.substackUrl}
+          target="_blank"
+          rel="noreferrer"
+          data-track-event="click_substack"
+          class="interactive-btn btn-primary px-4 py-2 text-[0.72rem]"
+        >
+          Follow Substack
+        </a>
+      </div>
+
+      <details class="group relative lg:hidden">
+        <summary
+          class="interactive-btn header-lang-btn list-none cursor-pointer px-3 py-1.5 text-[0.72rem]"
+          >Menu</summary
+        >
+        <div
+          class="header-mobile-panel absolute right-0 mt-2 w-[min(90vw,20rem)] rounded-xl p-4"
+        >
+          <nav aria-label="Mobile navigation">
+            <ul class="space-y-2">
+              {
+                navItems.map((item) => {
+                  const isActive =
+                    currentPath === item.href ||
+                    (item.href !== '/' && currentPath.startsWith(item.href));
+                  return (
+                    <li>
+                      <a
+                        href={item.href}
+                        aria-current={isActive ? 'page' : undefined}
+                        class:list={[
+                          'header-mobile-link block rounded-md px-2 py-1 text-sm font-semibold uppercase tracking-[0.08em]',
+                          isActive
+                            ? 'header-mobile-link-active'
+                            : 'header-mobile-link-idle',
+                        ]}
+                      >
+                        {item.label}
+                      </a>
+                    </li>
+                  );
+                })
+              }
+              <li>
+                <a
+                  href="/legal/disclaimer"
+                  class="header-mobile-link header-mobile-link-idle block rounded-md px-2 py-1 text-sm font-semibold uppercase tracking-[0.08em]"
+                >
+                  Legal
+                </a>
+              </li>
+            </ul>
+          </nav>
+          <div
+            class="header-mobile-divider mt-4 flex flex-wrap gap-2 border-t pt-3"
+          >
+            <a
+              href={siteConfig.social.x}
+              target="_blank"
+              rel="noreferrer"
+              data-track-event="click_social_x"
+              class="interactive-btn btn-secondary px-3 py-1.5 text-[0.62rem]"
+            >
+              X
+            </a>
+            <a
+              href={siteConfig.social.github}
+              target="_blank"
+              rel="noreferrer"
+              class="interactive-btn btn-secondary px-3 py-1.5 text-[0.62rem]"
+            >
+              GitHub
+            </a>
+            <a
+              href={siteConfig.social.youtube}
+              target="_blank"
+              rel="noreferrer"
+              class="interactive-btn btn-secondary px-3 py-1.5 text-[0.62rem]"
+            >
+              YouTube
+            </a>
+          </div>
+        </div>
+      </details>
+    </div>
+  </div>
+</header>
+
+<script is:inline>
+  (() => {
+    const setup = () => {
+      const header = document.querySelector('.site-header');
+      const menus = document.querySelectorAll('details.group');
+      if (menus.length === 0 && !(header instanceof HTMLElement)) {
+        return;
+      }
+
+      document.addEventListener('click', (event) => {
+        const target = event.target;
+        if (!(target instanceof Node)) return;
+        for (const menu of menus) {
+          if (!menu.contains(target)) menu.removeAttribute('open');
+        }
+      });
+
+      for (const menu of menus) {
+        const links = menu.querySelectorAll('a[href]');
+        for (const link of links) {
+          link.addEventListener('click', () => menu.removeAttribute('open'));
+        }
+      }
+
+      if (!(header instanceof HTMLElement)) return;
+
+      header.classList.remove('is-hidden');
+
+      let lastScrollY = window.scrollY;
+      let ticking = false;
+
+      const updateHeaderVisibility = () => {
+        const currentScrollY = window.scrollY;
+        const delta = currentScrollY - lastScrollY;
+        const menuOpen = Array.from(menus).some((m) => m.hasAttribute('open'));
+
+        if (menuOpen || currentScrollY < 32 || delta < -8) {
+          header.classList.remove('is-hidden');
+        } else if (delta > 8) {
+          header.classList.add('is-hidden');
+        }
+
+        lastScrollY = currentScrollY;
+        ticking = false;
+      };
+
+      window.addEventListener(
+        'scroll',
+        () => {
+          if (ticking) return;
+          ticking = true;
+          window.requestAnimationFrame(updateHeaderVisibility);
+        },
+        { passive: true },
+      );
+    };
+
+    setup();
+    document.addEventListener('astro:page-load', setup);
+  })();
+</script>

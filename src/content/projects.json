@@ -1,0 +1,79 @@
+[
+  {
+    "slug": "portfolio-manager",
+    "title": "Portfolio Manager",
+    "status": "active",
+    "summary": "A single-tenant family-office web platform that tracks assets and transactions, computes holdings and allocation in EUR, and provides authenticated portfolio operations dashboards.",
+    "description": "Portfolio Manager is my secure operating system for capital allocation. It centralizes assets, transactions, valuation, and allocation drift in one authenticated interface. The stack combines Next.js, TypeScript, PostgreSQL/Prisma, and a modular provider layer for prices, FX, news, and financial statements.\n\nThe platform includes a valuation engine for holdings and equity history, rule-based allocation and rebalance workflows, and admin refresh orchestration to keep market and reference data current. It is built for disciplined, single-user family-office management with production-grade API surfaces and operational controls.",
+    "highlights": [
+      "End-to-end portfolio engine: holdings, P&L, allocation, and equity snapshots in EUR",
+      "Provider architecture for prices, FX, news, and financial data with fallback logic",
+      "Authenticated operations UI for dashboard, assets, transactions, and rebalance actions",
+      "Automated refresh pipelines with cron endpoint, validation safeguards, and Dockerized setup"
+    ],
+    "tags": [
+      "portfolio-management",
+      "family-office",
+      "nextjs",
+      "typescript",
+      "postgresql",
+      "prisma"
+    ],
+    "showcase": {
+      "mode": "image",
+      "imageSrc": "/media/portoflio.png",
+      "imageAlt": "Portfolio Manager dashboard preview",
+      "caption": "Portfolio Manager interface preview",
+      "aspect": "16:9"
+    },
+    "link": "https://github.com/0xEniotna/portfolio-manager"
+  },
+  {
+    "slug": "extended-market-maker",
+    "title": "Extended Market Maker",
+    "status": "active",
+    "summary": "A standalone market maker engine for Extended, optimized by AI for execution quality and expectancy with dynamic quoting and inventory-aware risk controls.",
+    "description": "Extended Market Maker is a production-oriented quoting system focused on quality fills rather than raw fill count. It combines dynamic spread-based offsets, repricing hysteresis, post-only rejection handling, toxicity guards, stale-book protection, and circuit-breaker logic. This project is deployed on a Raspberry Pi and controlled by OpenClaw, which adjusts market-making parameters in real time based on live conditions.",
+    "highlights": [
+      "Dynamic quoting with min/max offset clamps and adaptive repricing gates",
+      "Inventory-aware skew with deadband, nonlinear shaping, and bps caps",
+      "Microstructure safeguards for volatility, drift, imbalance, and stale books",
+      "Live parameter tuning via OpenClaw control loop on Raspberry Pi"
+    ],
+    "tags": [
+      "market-making",
+      "execution",
+      "openclaw",
+      "raspberry-pi",
+      "python"
+    ],
+    "showcase": {
+      "mode": "image",
+      "imageSrc": "/media/marketmaker.png",
+      "imageAlt": "Extended Market Maker interface preview",
+      "caption": "Market maker monitoring preview",
+      "aspect": "16:9"
+    },
+    "link": "https://github.com/0xEniotna/extended-pairs-bot"
+  },
+  {
+    "slug": "accordion-pairs-bot",
+    "title": "Accordion - Pair trading Bot",
+    "status": "active",
+    "summary": "A statistical arbitrage bot for perpetual futures on Extended Exchange, focused on cointegration and spread mean reversion with paper, dry-run, and real trading modes.",
+    "description": "Accordion is a production-oriented statistical arbitrage system for crypto perpetual futures. It discovers cointegrated pairs, computes spread and z-score signals, and executes mean-reversion strategies with strict risk controls. The system supports paper, dry-run, and real trading, and includes state persistence, monitoring endpoints, and data pipelines for pair selection.",
+    "highlights": [
+      "Cointegration and half-life based pair discovery pipeline",
+      "Signal engine with z-score entry and exit logic",
+      "Risk layer with exposure limits, kill switch, and guardrails",
+      "Operational tooling for logs, API visibility, and strategy state export"
+    ],
+    "tags": [
+      "pairs-trading",
+      "stat-arb",
+      "crypto",
+      "python"
+    ],
+    "link": "https://github.com/0xEniotna/extended-pairs-bot"
+  }
+]

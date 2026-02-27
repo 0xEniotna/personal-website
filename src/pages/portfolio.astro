@@ -1,0 +1,39 @@
+---
+import PortfolioCard from "../components/PortfolioCard.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { portfolioData } from "../lib/content";
+import { buildCollectionPageSchema } from "../lib/seo-schema";
+---
+
+<BaseLayout
+  title="Portfolio"
+  path="/portfolio"
+  description="High-level portfolio pillars and allocation thesis for Mecker Capital."
+  jsonLd={buildCollectionPageSchema({
+    path: "/portfolio",
+    name: "Portfolio",
+    description: "High-level portfolio pillars and allocation thesis for Mecker Capital.",
+    about: ["Asset Allocation", "Global Macro", "Equities", "Commodities", "Crypto"],
+  })}
+>
+  <section class="section-card reveal max-w-5xl p-6 md:p-9">
+    <p class="label-bracket text-xs text-accent">Allocation framework</p>
+    <h1 class="mt-2 text-4xl font-semibold md:text-5xl">Portfolio pillars</h1>
+    <p class="mt-5 text-lg leading-relaxed text-ink-soft">
+      This page shows high-level thematic allocation ranges and research direction. Position sizing is indicative,
+      non-real-time, and shared only for educational context.
+    </p>
+  </section>
+
+  <section class="mt-12 grid gap-5 md:grid-cols-2">
+    {portfolioData.map((bucket) => <PortfolioCard bucket={bucket} />)}
+  </section>
+
+  <section class="section-card reveal mt-10 p-6 md:p-7">
+    <h2 class="text-2xl font-semibold">Important notice</h2>
+    <p class="mt-3 leading-relaxed text-ink-soft">
+      For informational purposes only. Not investment advice. No offer or solicitation to buy/sell securities. Past
+      performance does not guarantee future results.
+    </p>
+  </section>
+</BaseLayout>

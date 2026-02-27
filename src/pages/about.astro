@@ -1,0 +1,39 @@
+---
+import AboutContent from "../content/about.md";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { buildPersonSchema } from "../lib/seo-schema";
+import { siteConfig } from "../lib/site";
+---
+
+<BaseLayout
+  title="About"
+  path="/about"
+  description="About Antoine Mecker and the Mecker Capital platform."
+  jsonLd={buildPersonSchema()}
+>
+  <article class="section-card content-rich reveal max-w-4xl p-6 md:p-10">
+    <h1 class="text-4xl font-semibold text-ink md:text-5xl">About Antoine Mecker</h1>
+    <AboutContent />
+
+    <section class="mt-8 border-t border-line/75 pt-6">
+      <h2 class="text-2xl font-semibold text-ink">Connect and Explore</h2>
+      <div class="mt-4 flex flex-wrap gap-3">
+        <a class="interactive-btn btn-secondary px-4 py-2 text-sm" href="/writings">
+          Read Writings
+        </a>
+        <a class="interactive-btn btn-secondary px-4 py-2 text-sm" href="/projects">
+          View Projects
+        </a>
+        <a class="interactive-btn btn-secondary px-4 py-2 text-sm" href="/portfolio">
+          Portfolio Pillars
+        </a>
+      </div>
+      <div class="mt-4 flex flex-wrap gap-3 text-sm">
+        <a class="link-animate font-semibold text-accent" href={siteConfig.social.x} target="_blank" rel="noreferrer">X</a>
+        <a class="link-animate font-semibold text-accent" href={siteConfig.social.github} target="_blank" rel="noreferrer">GitHub</a>
+        <a class="link-animate font-semibold text-accent" href={siteConfig.social.youtube} target="_blank" rel="noreferrer">YouTube</a>
+        <span class="chip">{siteConfig.social.tiktokLabel}</span>
+      </div>
+    </section>
+  </article>
+</BaseLayout>

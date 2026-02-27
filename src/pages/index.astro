@@ -1,0 +1,228 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import HeroLogo3D from "../components/HeroLogo3D.astro";
+import { portfolioData, projectData } from "../lib/content";
+import { buildOrganizationSchema, buildPersonSchema, buildWebsiteSchema } from "../lib/seo-schema";
+import { siteConfig } from "../lib/site";
+import { getPostsWithFallback } from "../lib/writings";
+
+const writings = await getPostsWithFallback(siteConfig.substackFeedUrl, 6);
+const writingHighlights = writings.posts.slice(0, 3);
+const featuredWritings = writings.posts.slice(0, 5);
+const leadWriting = featuredWritings[0];
+const firstRowWriting = featuredWritings[1];
+const secondRowWritings = featuredWritings.slice(2, 5);
+const featuredProjects = projectData.slice(0, 3);
+const portfolioHighlights = portfolioData.slice(0, 3);
+const partnerMarks = ["Macro Lens", "China Desk", "US Cycles", "Crypto Infra", "Nuclear Theme"];
+const founded = "2026";
+---
+
+<BaseLayout
+  title="Home"
+  description="Independent capital allocation and public market writings by Antoine Mecker."
+  path="/"
+  jsonLd={[buildWebsiteSchema(), buildOrganizationSchema(), buildPersonSchema()]}
+>
+  <!-- Hero -->
+  <section class="hero-stage reveal">
+    <div class="relative z-10 grid gap-6 px-5 pb-3 pt-6 md:gap-7 md:px-7 md:pb-4 md:pt-7 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+      <div class="max-w-[36rem] lg:self-center">
+        <h1 class="hero-copy-title reveal-blur mt-2 text-4xl font-semibold leading-[0.96] tracking-[-0.04em] md:text-6xl md:leading-[0.93]" style="--d: 1; text-wrap: balance;">
+          Moving Capital Forward
+        </h1>
+        <p class="hero-copy-body reveal-blur mt-5 max-w-[31rem] text-lg leading-[1.45] md:text-[1.36rem]" style="--d: 2; text-wrap: pretty;">
+          Mecker Capital builds thesis-driven market research and execution systems, combining macro, finance, and technology into one operating platform.
+        </p>
+        <div class="reveal-blur mt-7 flex flex-wrap gap-3" style="--d: 3">
+          <a href="/projects" class="interactive-btn btn-primary px-5 py-3 text-sm">View Projects</a>
+          <a href={siteConfig.substackUrl} target="_blank" rel="noreferrer" data-track-event="click_substack" class="interactive-btn btn-dark px-5 py-3 text-sm">
+            Follow Writings
+          </a>
+        </div>
+      </div>
+
+      <div class="reveal-blur relative flex min-h-[17rem] items-center justify-center md:min-h-[27rem]" style="--d: 2">
+        <HeroLogo3D textureSrc="/media/mc-black.png" alt="MC black symbol" quality="balanced" interaction="mouse" />
+        <p class="absolute bottom-2 right-2 text-xl font-medium text-accent md:right-4">Est. in {founded}</p>
+      </div>
+    </div>
+
+    <div class="reveal-blur relative z-10 flex items-center justify-between border-t border-line px-5 py-2.5 text-ink-soft md:px-7" style="--d: 4">
+      <p class="text-xl tracking-[-0.02em] md:text-[1.34rem]">Scroll for more ↓</p>
+      <a href="/portfolio" class="label-bracket link-animate text-sm text-ink-soft hover:text-accent">Honors</a>
+    </div>
+  </section>
+
+  <!-- Marquee band -->
+  <section class="reveal mt-8 overflow-hidden rounded-[1rem] border border-line bg-[color:color-mix(in_srgb,var(--surface)_78%,var(--bg-alt)_22%)] py-7" style="--d: 0">
+    <p class="label-bracket mb-6 px-5 text-sm text-ink-soft md:px-7">Moving Forward</p>
+    <div class="marquee-container">
+      <div class="marquee-track">
+        {[...partnerMarks, ...partnerMarks].map((mark) => (
+          <span class="marquee-item text-3xl font-semibold tracking-[-0.02em] text-ink md:text-4xl">{mark}</span>
+        ))}
+        {[...partnerMarks, ...partnerMarks].map((mark) => (
+          <span class="marquee-item text-3xl font-semibold tracking-[-0.02em] text-ink md:text-4xl">{mark}</span>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Writings -->
+  <section class="mt-12">
+    <div class="reveal mb-6 flex items-center justify-between gap-4">
+      <h2 class="text-5xl font-semibold tracking-[-0.04em] md:text-7xl">Featured Writings</h2>
+      <a href="/writings" class="label-bracket link-animate text-sm text-ink-soft hover:text-ink">All Writings</a>
+    </div>
+
+    <div class="grid gap-4 lg:grid-cols-3">
+      {leadWriting && (
+        <a href={`/insights/${leadWriting.slug}`} class="feature-tile reveal-scale lg:col-span-2" style="--d: 0" data-track-event="click_insight_open">
+          {leadWriting.coverImage ? (
+            <img src={leadWriting.coverImage} alt={leadWriting.title} loading="lazy" />
+          ) : (
+            <div class="feature-fallback-primary"></div>
+          )}
+          <div class="feature-overlay">
+            <p class="text-3xl font-semibold tracking-[-0.03em] md:text-4xl">{leadWriting.title}</p>
+            <p class="mt-2 max-w-2xl text-base text-ink-soft">{leadWriting.excerpt || "Read the latest research update."}</p>
+            <div class="mt-3 flex flex-wrap gap-2">
+              <span class="chip">Research</span>
+              <span class="chip">Macro</span>
+              <span class="chip">Markets</span>
+            </div>
+          </div>
+        </a>
+      )}
+
+      {firstRowWriting && (
+        <a href={`/insights/${firstRowWriting.slug}`} class="feature-tile reveal-scale" style="--d: 1" data-track-event="click_insight_open">
+          {firstRowWriting.coverImage ? (
+            <img src={firstRowWriting.coverImage} alt={firstRowWriting.title} loading="lazy" />
+          ) : (
+            <div class="feature-fallback-secondary"></div>
+          )}
+          <div class="feature-overlay">
+            <p class="text-3xl font-semibold tracking-[-0.03em]">{firstRowWriting.title}</p>
+            <p class="mt-2 text-base text-ink-soft">{firstRowWriting.excerpt || "Open the summary page and continue on Substack."}</p>
+            <div class="mt-3 flex flex-wrap gap-2">
+              <span class="chip">Insight</span>
+              <span class="chip">Substack</span>
+            </div>
+          </div>
+        </a>
+      )}
+    </div>
+
+    {secondRowWritings.length > 0 && (
+      <div class="mt-4 grid gap-4 lg:grid-cols-3">
+        {secondRowWritings.map((post, i) => (
+          <a href={`/insights/${post.slug}`} class="feature-tile reveal-scale" style={`--d: ${i + 2}`} data-track-event="click_insight_open">
+            {post.coverImage ? (
+              <img src={post.coverImage} alt={post.title} loading="lazy" />
+            ) : (
+              <div class="feature-fallback-secondary"></div>
+            )}
+            <div class="feature-overlay">
+              <p class="text-3xl font-semibold tracking-[-0.03em]">{post.title}</p>
+              <p class="mt-2 text-base text-ink-soft">{post.excerpt || "Open the summary page and continue on Substack."}</p>
+              <div class="mt-3 flex flex-wrap gap-2">
+                <span class="chip">Insight</span>
+                <span class="chip">Substack</span>
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+    )}
+  </section>
+
+  <!-- Featured Projects -->
+  <section class="projects-stage reveal mt-12">
+    <div class="projects-stage-head reveal-blur" style="--d: 0">
+      <div class="projects-stage-lead">
+        <h2 class="projects-stage-title">Workshops</h2>
+        <a href="/projects" class="label-bracket link-animate projects-stage-link">All Projects</a>
+      </div>
+      <p class="projects-stage-quote">"Systems and execution, a compounding edge."</p>
+    </div>
+
+    <div class="projects-workshop-grid">
+      {featuredProjects.map((project, index) => (
+        <a href={`/projects/${project.slug}`} class="project-workshop-card reveal-scale" style={`--d: ${index + 1}`} data-track-event="click_project_open">
+          <div class="project-workshop-top">
+            <p class="project-workshop-name">{project.title}</p>
+            <span class="project-workshop-arrow" aria-hidden="true">↗</span>
+          </div>
+
+          <div class:list={["project-workshop-motif", `project-workshop-motif-${index % 3}`]} aria-hidden="true">
+            <span class="project-workshop-mark"></span>
+            <span class="project-workshop-mark"></span>
+            <span class="project-workshop-mark"></span>
+            <span class="project-workshop-mark"></span>
+            <span class="project-workshop-mark"></span>
+            <span class="project-workshop-mark"></span>
+            <span class="project-workshop-mark"></span>
+            <span class="project-workshop-mark"></span>
+            <span class="project-workshop-mark"></span>
+          </div>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <!-- Services & Expertise -->
+  <section class="panel-dark reveal mt-8 p-6 md:p-10">
+    <p class="label-bracket text-sm text-ink-soft">Services & Expertise</p>
+    <h2 class="reveal-blur mt-5 text-5xl font-semibold tracking-[-0.04em] md:text-7xl" style="--d: 1">Digital Capital Powerhouse</h2>
+    <p class="reveal-blur mt-4 max-w-3xl text-xl text-ink-soft" style="--d: 2">
+      Over years of iteration, I refined a practical research workflow spanning macro context, valuation logic, and systematic execution.
+    </p>
+
+    <div class="mt-8 grid gap-4 md:grid-cols-3">
+      {portfolioHighlights.map((bucket, i) => (
+        <article class="panel-soft reveal p-5" style={`--d: ${i + 3}`}>
+          <p class="label-bracket text-xs text-ink-soft">{bucket.label}</p>
+          <p class="mt-4 text-3xl font-semibold tracking-[-0.03em] text-ink">{bucket.targetRange ?? "Flexible"}</p>
+          <p class="mt-3 text-sm leading-relaxed text-ink-soft">{bucket.thesis}</p>
+          {bucket.riskNotes && <p class="mt-4 text-sm text-ink-soft">Risk: {bucket.riskNotes}</p>}
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <!-- About Antoine -->
+  <section class="panel-dark reveal mt-8 p-6 md:p-8">
+    <p class="label-bracket text-sm text-ink-soft">About Antoine</p>
+    <div class="mt-5 grid gap-4 lg:grid-cols-[0.34fr_0.66fr]">
+      <div class="grid gap-3 sm:grid-cols-3 lg:grid-cols-1">
+        <article class="panel-soft reveal p-5" style="--d: 1">
+          <p class="counter-value text-5xl font-semibold tracking-[-0.03em] text-ink" data-count-to="10" data-count-suffix="+">0</p>
+          <p class="mt-2 text-sm text-ink-soft">Years building in technology and markets</p>
+        </article>
+        <article class="panel-soft reveal p-5" style="--d: 2">
+          <p class="counter-value text-5xl font-semibold tracking-[-0.03em] text-ink" data-count-to={projectData.length} data-count-suffix="+">0</p>
+          <p class="mt-2 text-sm text-ink-soft">Production projects shipped</p>
+        </article>
+        <article class="panel-soft reveal p-5" style="--d: 3">
+          <p class="counter-value text-5xl font-semibold tracking-[-0.03em] text-ink" data-count-to={writingHighlights.length} data-count-suffix="+">0</p>
+          <p class="mt-2 text-sm text-ink-soft">Recent writings archived on-site</p>
+        </article>
+      </div>
+
+      <article class="panel-soft reveal p-6 md:p-7" style="--d: 2">
+        <h3 class="text-4xl font-semibold tracking-[-0.04em] text-ink md:text-5xl">Antoine Mecker</h3>
+        <p class="mt-4 max-w-3xl text-lg leading-relaxed text-ink-soft">
+          I am a crypto engineer turned macro-focused investor. Mecker Capital is my long-term platform to publish research,
+          challenge assumptions, and allocate capital with discipline.
+        </p>
+        <div class="mt-6 flex flex-wrap gap-3">
+          <a href="/about" class="interactive-btn btn-primary px-4 py-2 text-sm">Read Bio</a>
+          <a href={siteConfig.social.x} target="_blank" rel="noreferrer" class="interactive-btn btn-secondary px-4 py-2 text-sm">X Profile</a>
+          <a href="/writings" class="interactive-btn btn-secondary px-4 py-2 text-sm">Writings</a>
+        </div>
+      </article>
+    </div>
+  </section>
+</BaseLayout>

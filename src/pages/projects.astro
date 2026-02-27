@@ -1,0 +1,30 @@
+---
+import ProjectCard from "../components/ProjectCard.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { projectData } from "../lib/content";
+import { buildCollectionPageSchema } from "../lib/seo-schema";
+---
+
+<BaseLayout
+  title="Projects"
+  path="/projects"
+  description="Current and ongoing research projects at Mecker Capital."
+  jsonLd={buildCollectionPageSchema({
+    path: "/projects",
+    name: "Projects",
+    description: "Current and ongoing research projects at Mecker Capital.",
+    about: ["Quantitative Trading", "Market Making", "Statistical Arbitrage", "Crypto Infrastructure"],
+  })}
+>
+  <section class="section-card reveal max-w-5xl p-6 md:p-9">
+    <p class="label-bracket text-xs text-accent">Research and execution</p>
+    <h1 class="mt-2 text-4xl font-semibold md:text-5xl">Projects</h1>
+    <p class="mt-5 text-lg leading-relaxed text-ink-soft">
+      Selected initiatives where I convert thesis work into concrete frameworks, screens, and investment tools.
+    </p>
+  </section>
+
+  <section class="mt-12 grid gap-5 md:grid-cols-2">
+    {projectData.map((project) => <ProjectCard project={project} />)}
+  </section>
+</BaseLayout>

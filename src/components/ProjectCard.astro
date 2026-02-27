@@ -1,0 +1,36 @@
+---
+import type { ProjectItem } from "../lib/types";
+
+interface Props {
+  project: ProjectItem;
+}
+
+const { project } = Astro.props;
+
+const statusStyles: Record<ProjectItem["status"], string> = {
+  active: "status-chip-active",
+  research: "status-chip-research",
+  archived: "status-chip-archived",
+};
+---
+
+<a
+  href={`/projects/${project.slug}`}
+  class="section-card reveal block p-6 transition-transform duration-300 hover:scale-[1.02] md:p-7"
+  data-track-event="click_project_open"
+>
+  <article>
+    <div class="flex items-start justify-between gap-3">
+      <h3 class="text-2xl font-semibold text-ink md:text-[1.75rem]">{project.title}</h3>
+      <span class:list={["status-chip transition-transform duration-300", statusStyles[project.status]]}>
+        {project.status}
+      </span>
+    </div>
+
+    <p class="mt-4 text-base leading-relaxed text-ink-soft">{project.summary}</p>
+
+    <ul class="mt-5 flex flex-wrap gap-2">
+      {project.tags.map((tag) => <li class="chip-light">{tag}</li>)}
+    </ul>
+  </article>
+</a>

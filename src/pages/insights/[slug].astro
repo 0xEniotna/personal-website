@@ -1,0 +1,102 @@
+---
+import { Image } from "astro:assets";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { buildBlogPostingSchema } from "../../lib/seo-schema";
+import { siteConfig } from "../../lib/site";
+import type { SubstackPost } from "../../lib/types";
+import { getPostsWithFallback } from "../../lib/writings";
+
+export async function getStaticPaths() {
+  const result = await getPostsWithFallback(siteConfig.substackFeedUrl, 120);
+
+  return result.posts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props as { post: SubstackPost };
+const insightPath = `/insights/${post.slug}`;
+const robots = post.indexable === false ? "noindex,follow" : "index,follow";
+const summary = post.summary ?? post.excerpt;
+const takeaways = summary
+  .split(/\.(?:\s+|$)/)
+  .map((item) => item.trim())
+  .filter(Boolean)
+  .slice(0, 3);
+const localImage = post.coverImage?.startsWith("/") ? post.coverImage : undefined;
+const pageDescription = post.seoDescription ?? post.excerpt;
+const pageTitle = post.seoTitle ?? post.title;
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  path={insightPath}
+  robots={robots}
+  ogType="article"
+  publishedTime={post.publishedAt}
+  modifiedTime={post.publishedAt}
+  jsonLd={buildBlogPostingSchema(post)}
+>
+  <article class="section-card reveal max-w-4xl p-6 md:p-10">
+    <p class="label-bracket text-xs text-accent">Insight</p>
+    <h1 class="mt-2 text-4xl font-semibold leading-tight text-ink md:text-5xl">{post.title}</h1>
+    <p class="mt-3 text-sm text-ink-soft">
+      Published {new Date(post.publishedAt).toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}
+    </p>
+
+    {post.coverImage && (
+      <div class="mt-6 overflow-hidden rounded-2xl border border-line/70">
+        {localImage ? (
+          <Image
+            src={localImage}
+            alt={`Cover image for ${post.title}`}
+            width={1200}
+            height={675}
+            class="h-auto w-full object-cover"
+          />
+        ) : (
+          <img
+            src={post.coverImage}
+            alt={`Cover image for ${post.title}`}
+            width="1200"
+            height="675"
+            loading="lazy"
+            decoding="async"
+            class="h-auto w-full object-cover"
+          />
+        )}
+      </div>
+    )}
+
+    <section class="mt-8 space-y-4">
+      <h2 class="text-2xl font-semibold text-ink">Summary</h2>
+      <p class="text-base leading-relaxed text-ink-soft">{summary}</p>
+    </section>
+
+    {takeaways.length > 0 && (
+      <section class="mt-8 space-y-4">
+        <h2 class="text-2xl font-semibold text-ink">Key takeaways</h2>
+        <ul class="space-y-2">
+          {takeaways.map((item) => <li class="text-ink-soft">- {item}</li>)}
+        </ul>
+      </section>
+    )}
+
+    <section class="mt-10 flex flex-wrap gap-3">
+      <a
+        href={post.url}
+        target="_blank"
+        rel="noreferrer"
+        data-track-event="click_substack"
+        class="interactive-btn btn-primary px-5 py-2.5 text-sm"
+      >
+        Read full article on Substack
+      </a>
+      <a href="/writings" class="interactive-btn btn-secondary px-5 py-2.5 text-sm">
+        Back to Writings
+      </a>
+    </section>
+  </article>
+</BaseLayout>

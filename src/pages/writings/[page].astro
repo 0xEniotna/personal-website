@@ -1,0 +1,95 @@
+---
+import PostCard from "../../components/PostCard.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { siteConfig } from "../../lib/site";
+import { getPostsWithFallback } from "../../lib/writings";
+
+export async function getStaticPaths() {
+  const perPage = 6;
+  const result = await getPostsWithFallback(siteConfig.substackFeedUrl, 120);
+  const posts = result.posts;
+  const totalPages = Math.max(1, Math.ceil(posts.length / perPage));
+
+  return Array.from({ length: totalPages }, (_, index) => {
+    const page = index + 1;
+
+    return {
+      params: { page: String(page) },
+      props: {
+        page,
+        totalPages,
+        posts: posts.slice(index * perPage, (index + 1) * perPage),
+        source: result.source,
+      },
+    };
+  }).filter(({ params }) => params.page !== "1");
+}
+
+const { page, totalPages, posts, source } = Astro.props;
+const pageTitle = `Writings - Page ${page}`;
+---
+
+<BaseLayout
+  title={pageTitle}
+  path={`/writings/${page}`}
+  description="Latest Substack writings by Antoine Mecker."
+  robots="noindex,follow"
+>
+  <section class="section-card reveal max-w-5xl p-6 md:p-9">
+    <p class="label-bracket text-xs text-accent">Substack</p>
+    <div class="mt-2 flex flex-col gap-4 md:flex-row md:items-start md:justify-between md:gap-6">
+      <div>
+        <h1 class="text-4xl font-semibold md:text-5xl">Writings archive</h1>
+        <p class="mt-5 text-lg text-ink-soft">Page {page} of {totalPages}</p>
+      </div>
+      <a
+        href={siteConfig.substackUrl}
+        target="_blank"
+        rel="noreferrer"
+        class="interactive-btn btn-primary w-full justify-center px-5 py-3 text-sm md:mt-1 md:w-auto md:flex-none"
+        data-track-event="click_substack"
+      >
+        Follow on Substack
+      </a>
+    </div>
+  </section>
+
+  {source === "cache" && (
+    <div class="section-card mt-8 p-4 text-sm text-ink-soft">
+      Feed is currently unavailable. Showing cached articles.
+    </div>
+  )}
+
+  {posts.length > 0 && (
+    <section class="mt-10 grid gap-5 md:grid-cols-2">
+      {posts.map((post) => <PostCard post={post} />)}
+    </section>
+  )}
+
+  {posts.length === 0 && (
+    <div class="section-card mt-10 p-6">
+      <p class="text-ink-soft">No posts on this page yet.</p>
+      <a class="interactive-btn btn-primary mt-4 px-4 py-2 text-sm" href="/writings">
+        Back to writings
+      </a>
+    </div>
+  )}
+
+  <nav class="mt-10 flex flex-wrap gap-3" aria-label="Writings pagination">
+    {page > 2 && (
+      <a class="interactive-btn btn-secondary px-4 py-2 text-sm" href={`/writings/${page - 1}`}>
+        Previous page
+      </a>
+    )}
+    {page === 2 && (
+      <a class="interactive-btn btn-secondary px-4 py-2 text-sm" href="/writings">
+        Previous page
+      </a>
+    )}
+    {page < totalPages && (
+      <a class="interactive-btn btn-dark px-4 py-2 text-sm" href={`/writings/${page + 1}`}>
+        Next page
+      </a>
+    )}
+  </nav>
+</BaseLayout>

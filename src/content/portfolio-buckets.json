@@ -1,0 +1,44 @@
+[
+  {
+    "slug": "china-equities",
+    "label": "China Equities",
+    "thesis": "Long-term overweight on Chinese equities driven by industrial innovation, domestic consumption transition, and technology catch-up dynamics.",
+    "targetRange": "20-35%",
+    "riskNotes": "Policy shifts, geopolitical pressure, and FX volatility can materially affect returns."
+  },
+  {
+    "slug": "us-equities",
+    "label": "US Equities",
+    "thesis": "Selective exposure to US market leaders in productivity, software infrastructure, and global platforms while avoiding crowded narratives.",
+    "targetRange": "10-25%",
+    "riskNotes": "Valuation compression and policy regime changes can lead to sharp drawdowns."
+  },
+  {
+    "slug": "europe-export-leaders",
+    "label": "Europe Export Leaders",
+    "thesis": "Focus on globally competitive European businesses with diversified revenue outside domestic demand constraints.",
+    "targetRange": "10-20%",
+    "riskNotes": "Regulatory burden and weak regional growth may reduce multiples and earnings momentum."
+  },
+  {
+    "slug": "crypto-core",
+    "label": "Crypto Core",
+    "thesis": "Core positions in Bitcoin and Ethereum with tactical exposure to cash-flow-generating DeFi protocols.",
+    "targetRange": "10-20%",
+    "riskNotes": "Extremely high volatility, regulatory uncertainty, and protocol-specific risks remain structural."
+  },
+  {
+    "slug": "commodities-precious",
+    "label": "Commodities and Precious Metals",
+    "thesis": "Strategic allocation to gold, silver, and selected commodity trends as macro and inflation hedges.",
+    "targetRange": "10-15%",
+    "riskNotes": "Commodity cycles are nonlinear and sensitive to real rates and global demand shocks."
+  },
+  {
+    "slug": "uranium-nuclear",
+    "label": "Uranium and Nuclear Value Chain",
+    "thesis": "Bullish structural exposure to uranium and civil nuclear innovation, including SMR-linked opportunities.",
+    "targetRange": "5-15%",
+    "riskNotes": "Execution risk, permitting timelines, and political narratives can delay thesis realization."
+  }
+]

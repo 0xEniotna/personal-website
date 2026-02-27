@@ -1,0 +1,13 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F6F2EA"/>
+      <stop offset="1" stop-color="#E3ECEA"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect x="72" y="72" width="1056" height="486" rx="20" fill="#0E2A33" fill-opacity="0.96"/>
+  <text x="120" y="255" fill="#F0E9D8" font-family="Space Grotesk, sans-serif" font-size="72" font-weight="700">Mecker Capital</text>
+  <text x="120" y="330" fill="#C4D0CE" font-family="Source Serif 4, serif" font-size="34">Independent capital allocation, macro research, and public writings.</text>
+  <text x="120" y="500" fill="#D7A46B" font-family="Space Grotesk, sans-serif" font-size="28">mecker.capital</text>
+</svg>

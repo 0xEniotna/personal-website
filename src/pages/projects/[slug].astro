@@ -1,0 +1,117 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import ProjectShowcase from "../../components/ProjectShowcase.astro";
+import { projectData } from "../../lib/content";
+import { buildProjectPageSchema } from "../../lib/seo-schema";
+import type { ProjectItem } from "../../lib/types";
+
+export function getStaticPaths() {
+  return projectData.map((project) => ({
+    params: { slug: project.slug },
+    props: { project },
+  }));
+}
+
+const { project } = Astro.props as { project: ProjectItem };
+
+const statusStyles: Record<ProjectItem["status"], string> = {
+  active: "status-chip-active",
+  research: "status-chip-research",
+  archived: "status-chip-archived",
+};
+
+const detailParagraphs = (project.description ?? project.summary)
+  .split("\n")
+  .map((line) => line.trim())
+  .filter(Boolean);
+const pageDescription = detailParagraphs[0] ?? project.summary;
+const projectPath = `/projects/${project.slug}`;
+const relatedProjects = projectData.filter((item) => item.slug !== project.slug).slice(0, 2);
+
+function humanizeTag(tag: string): string {
+  return tag
+    .split("-")
+    .filter(Boolean)
+    .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
+    .join(" ");
+}
+
+const fallbackFeatures = project.tags
+  .slice(0, 3)
+  .map((tag) => `${humanizeTag(tag)} capability in active development.`);
+
+const importantFeatures =
+  project.highlights && project.highlights.length > 0
+    ? project.highlights
+    : fallbackFeatures.length > 0
+      ? fallbackFeatures
+      : ["Core project capabilities are being documented."];
+---
+
+<BaseLayout title={project.title} description={pageDescription} path={projectPath} jsonLd={buildProjectPageSchema(project)}>
+  <article class="section-card reveal w-full p-6 md:p-10">
+    <div class="flex flex-wrap items-center justify-between gap-3">
+      <p class="label-bracket text-xs text-accent">Project</p>
+      <span class:list={["status-chip", statusStyles[project.status]]}>
+        {project.status}
+      </span>
+    </div>
+    <h1 class="mt-3 text-5xl font-semibold leading-[0.96] tracking-[-0.04em] text-ink md:text-7xl">{project.title}</h1>
+    <p class="mt-6 max-w-4xl text-xl leading-relaxed text-ink-soft">{project.summary}</p>
+  </article>
+
+  <section class="section-card reveal mt-8 w-full p-6 md:p-9" style="--d: 1">
+    <p class="label-bracket text-xs text-accent">Showcase</p>
+    <div class="mt-5">
+      <ProjectShowcase project={project} />
+    </div>
+  </section>
+
+  <article class="section-card reveal mt-8 w-full p-6 md:p-9" style="--d: 2">
+    <section class="space-y-4">
+      <h2 class="text-3xl font-semibold text-ink md:text-4xl">Important features</h2>
+      <ul class="space-y-2">
+        {importantFeatures.map((item) => <li class="text-base leading-relaxed text-ink-soft">- {item}</li>)}
+      </ul>
+    </section>
+
+    <section class="mt-8 space-y-4">
+      <h2 class="text-2xl font-semibold text-ink">Overview</h2>
+      {detailParagraphs.map((paragraph) => <p class="text-base leading-relaxed text-ink-soft">{paragraph}</p>)}
+    </section>
+
+    <section class="mt-8">
+      <h2 class="text-2xl font-semibold text-ink">Stack & tags</h2>
+      <ul class="mt-4 flex flex-wrap gap-2">
+        {project.tags.map((tag) => <li class="chip-light">{tag}</li>)}
+      </ul>
+    </section>
+
+    <div class="mt-10 flex flex-wrap gap-3">
+      <a href="/projects" class="interactive-btn btn-secondary px-5 py-2.5 text-sm">Back to Projects</a>
+      {project.link && (
+        <a
+          href={project.link}
+          target="_blank"
+          rel="noreferrer"
+          data-track-event="click_project_repo"
+          class="interactive-btn btn-primary px-5 py-2.5 text-sm"
+        >
+          Open repository
+        </a>
+      )}
+    </div>
+  </article>
+
+  {relatedProjects.length > 0 && (
+    <section class="mt-8 grid gap-4 md:grid-cols-2">
+      {relatedProjects.map((item) => (
+        <a href={`/projects/${item.slug}`} class="section-card reveal p-5 transition-all duration-500 hover:-translate-y-1" data-track-event="click_project_open">
+          <p class="label-bracket text-xs text-accent">{item.status}</p>
+          <h3 class="mt-3 text-2xl font-semibold text-ink">{item.title}</h3>
+          <p class="mt-3 text-sm leading-relaxed text-ink-soft">{item.summary}</p>
+        </a>
+      ))}
+    </section>
+  )}
+</BaseLayout>

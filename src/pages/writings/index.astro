@@ -1,0 +1,80 @@
+---
+import PostCard from "../../components/PostCard.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { buildCollectionPageSchema } from "../../lib/seo-schema";
+import { siteConfig } from "../../lib/site";
+import { getPostsWithFallback } from "../../lib/writings";
+
+const perPage = 6;
+const result = await getPostsWithFallback(siteConfig.substackFeedUrl, 60);
+const posts = result.posts.slice(0, perPage);
+const hasMore = result.posts.length > perPage;
+---
+
+<BaseLayout
+  title="Writings"
+  path="/writings"
+  description="Latest Substack writings by Antoine Mecker."
+  jsonLd={buildCollectionPageSchema({
+    path: "/writings",
+    name: "Writings",
+    description: "Essays and research notes on macro, finance, geopolitics, and market structure.",
+    about: ["Finance", "Macroeconomics", "Geopolitics", "Digital Assets"],
+  })}
+>
+  <section class="section-card reveal max-w-5xl p-6 md:p-9">
+    <p class="label-bracket text-xs text-accent">Substack</p>
+    <div class="mt-2 flex flex-col gap-4 md:flex-row md:items-start md:justify-between md:gap-6">
+      <div>
+        <h1 class="text-4xl font-semibold md:text-5xl">Writings and market notes</h1>
+        <p class="mt-5 max-w-3xl text-lg leading-relaxed text-ink-soft">
+          Essays and research notes on macro, finance, geopolitics, and market structure.
+        </p>
+      </div>
+      <a
+        href={siteConfig.substackUrl}
+        target="_blank"
+        rel="noreferrer"
+        class="interactive-btn btn-primary w-full justify-center px-5 py-3 text-sm md:mt-1 md:w-auto md:flex-none"
+        data-track-event="click_substack"
+      >
+        Follow on Substack
+      </a>
+    </div>
+  </section>
+
+  {result.source === "cache" && (
+    <div class="section-card reveal mt-8 p-4 text-sm text-ink-soft">
+      Feed is currently unavailable. Showing the latest cached articles.
+    </div>
+  )}
+
+  {result.source === "empty" && (
+    <div class="section-card reveal mt-8 p-6 text-ink-soft">
+      <p>No articles are available in the local cache right now.</p>
+      <a
+        class="interactive-btn btn-primary mt-4 px-4 py-2 text-sm"
+        href={siteConfig.substackUrl}
+        target="_blank"
+        rel="noreferrer"
+        data-track-event="click_substack"
+      >
+        Visit Substack directly
+      </a>
+    </div>
+  )}
+
+  {posts.length > 0 && (
+    <section class="mt-12 grid gap-5 md:grid-cols-2">
+      {posts.map((post) => <PostCard post={post} />)}
+    </section>
+  )}
+
+  <section class="reveal mt-10 flex flex-wrap items-center gap-3" style="--d: 1">
+    {hasMore && (
+      <a class="interactive-btn btn-secondary px-5 py-2.5 text-sm" href="/writings/2">
+        Next page
+      </a>
+    )}
+  </section>
+</BaseLayout>

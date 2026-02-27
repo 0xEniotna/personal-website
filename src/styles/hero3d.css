@@ -1,0 +1,47 @@
+.hero-emblem-shell--3d {
+  position: relative;
+}
+
+.hero-logo-3d-stage {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 1.6rem;
+  overflow: hidden;
+}
+
+.hero-logo-3d-canvas,
+.hero-emblem-fallback,
+.hero-emblem-noscript {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.hero-logo-3d-canvas {
+  opacity: 0;
+  transition: opacity 340ms ease;
+}
+
+.hero-emblem-fallback {
+  opacity: 1;
+  margin: auto;
+  transition: opacity 260ms ease;
+}
+
+.hero-emblem-noscript {
+  margin: auto;
+}
+
+.hero-emblem-shell--3d.hero-logo-3d--ready .hero-logo-3d-canvas {
+  opacity: 1;
+}
+
+.hero-emblem-shell--3d.hero-logo-3d--ready .hero-emblem-fallback {
+  opacity: 0;
+}
+
+.hero-emblem-shell--3d.hero-logo-3d--fallback-only .hero-logo-3d-canvas {
+  display: none;
+}

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://mecker.capital/sitemap-index.xml

@@ -1,0 +1,148 @@
+---
+import { siteConfig } from '../lib/site';
+
+const year = new Date().getFullYear();
+---
+
+<footer class="relative z-10 px-4 pb-6 md:px-6">
+  <div class="site-footer-shell mx-auto max-w-[96rem]">
+    <div class="site-footer-video-wrap" aria-hidden="true">
+      <video
+        class="site-footer-video"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="metadata"
+      >
+        <source src="/media/footer-background.mp4" type="video/mp4" />
+      </video>
+    </div>
+    <div class="site-footer-tone" aria-hidden="true"></div>
+
+    <div class="site-footer-content">
+      <div
+        class="site-footer-top grid gap-8 px-6 pb-8 pt-8 md:grid-cols-[1.35fr_repeat(4,minmax(0,1fr))] md:px-8 md:pt-9"
+      >
+        <div class="md:col-span-1">
+          <p class="text-4xl font-semibold tracking-[-0.04em] text-white md:text-6xl">
+            Mecker Capital
+          </p>
+        </div>
+
+        <div>
+          <p class="footer-col-title">Index</p>
+          <ul class="mt-3 space-y-1.5 text-base md:text-[1.35rem]">
+            <li><a class="footer-link" href="/">Home</a></li>
+            <li><a class="footer-link" href="/writings">Writings</a></li>
+            <li><a class="footer-link" href="/projects">Projects</a></li>
+            <li><a class="footer-link" href="/portfolio">Portfolio</a></li>
+            <li><a class="footer-link" href="/about">About</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <p class="footer-col-title">Terms & Policies</p>
+          <ul class="mt-3 space-y-1.5 text-base md:text-[1.35rem]">
+            <li>
+              <a class="footer-link" href="/legal/disclaimer">Disclaimer</a>
+            </li>
+            <li>
+              <a class="footer-link" href="/legal/privacy">Privacy Policy</a>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <p class="footer-col-title">Digital Desk</p>
+          <ul class="mt-3 space-y-1.5 text-base md:text-[1.35rem]">
+            <li>
+              <a
+                class="footer-link"
+                href={siteConfig.substackUrl}
+                target="_blank"
+                rel="noreferrer">Substack</a
+              >
+            </li>
+            <li>
+              <a class="footer-link" href="/writings">Insights Archive</a>
+            </li>
+            <li>
+              <a class="footer-link" href="/projects">Execution Systems</a>
+            </li>
+            <li>
+              <a class="footer-link" href="/portfolio">Allocation Pillars</a>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <p class="footer-col-title">Socials</p>
+          <ul class="mt-3 space-y-1.5 text-base md:text-[1.35rem]">
+            <li>
+              <a
+                class="footer-link"
+                href={siteConfig.social.x}
+                target="_blank"
+                rel="noreferrer">X</a
+              >
+            </li>
+            <li>
+              <a
+                class="footer-link"
+                href={siteConfig.social.github}
+                target="_blank"
+                rel="noreferrer">GitHub</a
+              >
+            </li>
+            <li>
+              <a
+                class="footer-link"
+                href={siteConfig.social.youtube}
+                target="_blank"
+                rel="noreferrer">YouTube</a
+              >
+            </li>
+            <li>
+              <span class="footer-muted">{siteConfig.social.tiktokLabel}</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="site-footer-fill" aria-hidden="true"></div>
+
+      <div class="site-footer-bottom px-6 pb-6 pt-4 md:px-8">
+        <p>© {year} Mecker Capital. All rights reserved.</p>
+        <p class="mt-1 md:mt-0">
+          For informational purposes only. Not investment advice. No offer or
+          solicitation to buy/sell securities.
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script is:inline>
+  (() => {
+    const video = document.querySelector('.site-footer-video');
+    if (!(video instanceof HTMLVideoElement)) {
+      return;
+    }
+
+    const tryPlay = () => {
+      const playPromise = video.play();
+      if (playPromise && typeof playPromise.catch === 'function') {
+        playPromise.catch(() => undefined);
+      }
+    };
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', tryPlay, { once: true });
+    } else {
+      tryPlay();
+    }
+
+    video.addEventListener('canplay', tryPlay, { once: true });
+  })();
+</script>

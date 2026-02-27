@@ -1,0 +1,139 @@
+---
+import { ClientRouter } from "astro:transitions";
+import Analytics from "@vercel/analytics/astro";
+import BaseHead from "../components/BaseHead.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+import SiteHeader from "../components/SiteHeader.astro";
+import "../styles/global.css";
+
+interface Props {
+  title: string;
+  description?: string;
+  path?: string;
+  heroClass?: string;
+  robots?: string;
+  jsonLd?: Record<string, unknown> | Array<Record<string, unknown>>;
+  ogType?: "website" | "article";
+  publishedTime?: string;
+  modifiedTime?: string;
+}
+
+const { title, description, path, heroClass, robots, jsonLd, ogType, publishedTime, modifiedTime } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead
+      title={title}
+      description={description}
+      path={path}
+      robots={robots}
+      jsonLd={jsonLd}
+      ogType={ogType}
+      publishedTime={publishedTime}
+      modifiedTime={modifiedTime}
+    />
+    <ClientRouter />
+  </head>
+  <body class="text-ink">
+    <SiteHeader />
+    <main class:list={["relative z-10 mx-auto max-w-[96rem] px-4 pb-20 pt-4 md:px-6 md:pt-6", heroClass]}>
+      <slot />
+    </main>
+    <SiteFooter />
+    <Analytics />
+    <script is:inline>
+      (() => {
+        const SEL = ".reveal, .reveal-scale, .reveal-blur";
+
+        function setupReveals() {
+          const reveals = document.querySelectorAll(SEL);
+          const observer = new IntersectionObserver(
+            (entries) => {
+              for (const entry of entries) {
+                if (!entry.isIntersecting) continue;
+                const el = entry.target;
+                el.classList.add("is-visible");
+                observer.unobserve(el);
+                /* cascade: also reveal descendant reveal elements */
+                const children = el.querySelectorAll(SEL);
+                for (const child of children) {
+                  if (!child.classList.contains("is-visible")) {
+                    child.classList.add("is-visible");
+                    observer.unobserve(child);
+                  }
+                }
+              }
+            },
+            { threshold: 0.06, rootMargin: "0px 0px -32px 0px" }
+          );
+
+          for (const node of reveals) {
+            if (!node.classList.contains("is-visible")) {
+              observer.observe(node);
+            }
+          }
+        }
+
+        function setupCounters() {
+          const counters = document.querySelectorAll("[data-count-to]");
+          if (counters.length === 0) return;
+          const obs = new IntersectionObserver(
+            (entries) => {
+              for (const entry of entries) {
+                if (!entry.isIntersecting) continue;
+                const el = entry.target;
+                const target = parseInt(el.getAttribute("data-count-to") || "0", 10);
+                const suffix = el.getAttribute("data-count-suffix") || "";
+                const duration = 1200;
+                const start = performance.now();
+                const step = (now) => {
+                  const elapsed = now - start;
+                  const progress = Math.min(elapsed / duration, 1);
+                  const eased = 1 - Math.pow(1 - progress, 3);
+                  el.textContent = Math.round(eased * target) + suffix;
+                  if (progress < 1) requestAnimationFrame(step);
+                };
+                requestAnimationFrame(step);
+                obs.unobserve(el);
+              }
+            },
+            { threshold: 0.3 }
+          );
+          for (const c of counters) obs.observe(c);
+        }
+
+        function setupTracking() {
+          document.addEventListener("click", (event) => {
+            const target = event.target;
+            if (!(target instanceof Element)) return;
+            const tracked = target.closest("[data-track-event]");
+            if (!tracked) return;
+            const name = tracked.getAttribute("data-track-event");
+            if (name && typeof window.va === "function") {
+              window.va("event", { name: name });
+            }
+          });
+        }
+
+        function init() {
+          setupReveals();
+          setupCounters();
+          setupTracking();
+        }
+
+        if (document.readyState === "loading") {
+          document.addEventListener("DOMContentLoaded", init, { once: true });
+        } else {
+          init();
+        }
+
+        document.addEventListener("astro:page-load", () => {
+          setupReveals();
+          setupCounters();
+        });
+      })();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,71 @@
+---
+import type { Hero3DInteraction, Hero3DQuality } from "../lib/hero3d";
+
+interface Props {
+  textureSrc: string;
+  alt: string;
+  quality?: Hero3DQuality;
+  interaction?: Hero3DInteraction;
+}
+
+const { textureSrc, alt, quality = "balanced", interaction = "mouse" } = Astro.props;
+---
+
+<div
+  class="hero-emblem-shell hero-emblem-shell--3d"
+  data-hero-logo-3d
+  data-texture-src={textureSrc}
+  data-quality={quality}
+  data-interaction={interaction}
+>
+  <div class="hero-logo-3d-stage">
+    <canvas class="hero-logo-3d-canvas" data-hero-logo-3d-canvas aria-hidden="true"></canvas>
+    <img
+      src={textureSrc}
+      alt={alt}
+      class="hero-emblem hero-emblem-fallback"
+      data-hero-logo-3d-fallback
+      loading="eager"
+      decoding="async"
+    />
+    <noscript>
+      <img src={textureSrc} alt={alt} class="hero-emblem hero-emblem-noscript" loading="eager" decoding="async" />
+    </noscript>
+  </div>
+</div>
+
+<script>
+  import { initHeroLogo3D } from "../scripts/hero-logo-3d";
+
+  const roots = document.querySelectorAll("[data-hero-logo-3d]");
+  const handles: Array<{ destroy: () => void }> = [];
+
+  for (const root of roots) {
+    if (!(root instanceof HTMLElement)) {
+      continue;
+    }
+
+    if (root.dataset.heroLogo3dMounted === "true") {
+      continue;
+    }
+
+    root.dataset.heroLogo3dMounted = "true";
+    const handle = initHeroLogo3D(root);
+    if (!handle) {
+      continue;
+    }
+
+    handles.push(handle);
+  }
+
+  if (handles.length > 0) {
+    const destroyAll = () => {
+      for (const handle of handles) {
+        handle.destroy();
+      }
+    };
+
+    window.addEventListener("beforeunload", destroyAll, { once: true });
+    document.addEventListener("astro:before-swap", destroyAll, { once: true });
+  }
+</script>

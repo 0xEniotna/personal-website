@@ -1,0 +1,36 @@
+{
+  "name": "mecker-capital-site",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "prebuild": "node ./scripts/update-substack-cache.mjs",
+    "build": "astro build",
+    "preview": "astro preview",
+    "check:max-lines": "node ./scripts/check-max-lines.mjs",
+    "check:quality": "pnpm check:max-lines && pnpm test && ASTRO_TELEMETRY_DISABLED=1 pnpm build",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:e2e": "playwright test"
+  },
+  "dependencies": {
+    "@astrojs/mdx": "^3.1.8",
+    "@astrojs/sitemap": "^3.2.1",
+    "@astrojs/tailwind": "^5.1.2",
+    "@fontsource/source-serif-4": "^5.2.6",
+    "@fontsource/space-grotesk": "^5.2.7",
+    "@vercel/analytics": "^1.5.0",
+    "astro": "^5.2.0",
+    "fast-xml-parser": "^5.0.8",
+    "tailwindcss": "^3.4.17",
+    "three": "^0.180.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.51.1",
+    "@types/node": "^22.13.10",
+    "typescript": "^5.8.2",
+    "vitest": "^3.0.8"
+  }
+}
