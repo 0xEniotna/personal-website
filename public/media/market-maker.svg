@@ -1,0 +1,435 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675">
+  <defs>
+    <linearGradient id="mmBg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#131722"/>
+      <stop offset="100%" stop-color="#0f1318"/>
+    </linearGradient>
+    <linearGradient id="greenCandle" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#26a69a"/>
+      <stop offset="100%" stop-color="#1b8a7a"/>
+    </linearGradient>
+    <linearGradient id="redCandle" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ef5350"/>
+      <stop offset="100%" stop-color="#d32f2f"/>
+    </linearGradient>
+    <filter id="mmGlow">
+      <feGaussianBlur stdDeviation="1.5" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="675" fill="url(#mmBg)" rx="6"/>
+
+  <!-- ═══════════ TOP BAR ═══════════ -->
+  <rect x="0" y="0" width="1200" height="40" fill="#1c2030"/>
+  <line x1="0" y1="40" x2="1200" y2="40" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+
+  <!-- Pair selector -->
+  <rect x="12" y="8" width="110" height="24" rx="4" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.08)" stroke-width="0.5"/>
+  <text x="22" y="24" font-family="SF Mono, Menlo, Monaco, Consolas, monospace" font-size="11" font-weight="700" fill="#e0e4f0">ETH / USD</text>
+  <text x="97" y="24" font-family="SF Mono, Menlo, Monaco, Consolas, monospace" font-size="8" fill="#4a5072">▼</text>
+
+  <!-- Price info -->
+  <text x="140" y="18" font-family="SF Mono, Menlo, Monaco, Consolas, monospace" font-size="16" font-weight="700" fill="#e0e4f0">3,247.8 USD</text>
+
+  <g font-family="SF Mono, Menlo, Monaco, Consolas, monospace" font-size="9" fill="#4a5072">
+    <text x="310" y="16">MARK PRICE</text>
+    <text x="310" y="28" fill="#e0e4f0" font-weight="600">3,248.2 USD</text>
+
+    <text x="420" y="16">INDEX PRICE</text>
+    <text x="420" y="28" fill="#e0e4f0" font-weight="600">3,249.1 USD</text>
+
+    <text x="530" y="16">FUNDING RATE</text>
+    <text x="530" y="28" fill="#26a69a" font-weight="600">-0.0012%</text>
+
+    <text x="640" y="16">24H CHANGE</text>
+    <text x="640" y="28" fill="#26a69a" font-weight="600">+87.4 USD +2.76%</text>
+  </g>
+
+  <!-- Top right: order entry tab -->
+  <rect x="870" y="8" width="50" height="24" rx="4" fill="rgba(255,255,255,0.04)"/>
+  <text x="895" y="24" font-family="SF Mono, Menlo, Monaco, Consolas, monospace" font-size="9" fill="#4a5072" text-anchor="middle">0.1</text>
+  <text x="940" y="24" font-family="SF Mono, Menlo, Monaco, Consolas, monospace" font-size="9" fill="#4a5072">ETH ▼</text>
+
+  <text x="1010" y="16" font-family="SF Mono, Menlo, Monaco, Consolas, monospace" font-size="8" fill="#4a5072">C</text>
+  <text x="1010" y="28" font-family="SF Mono, Menlo, Monaco, Consolas, monospace" font-size="9" fill="#e0e4f0" font-weight="600">ETH</text>
+
+  <!-- ═══════════ SECONDARY BAR ═══════════ -->
+  <rect x="0" y="40" width="900" height="28" fill="#181c28"/>
+  <line x1="0" y1="68" x2="900" y2="68" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+
+  <g font-family="SF Mono, Menlo, Monaco, Consolas, monospace" font-size="10">
+    <text x="16" y="58" fill="#4a5072">Market</text>
+    <text x="68" y="58" fill="#4a5072">Depth</text>
+    <text x="110" y="58" fill="#4a5072">Funding Rate</text>
+  </g>
+
+  <!-- Chart toolbar -->
+  <g font-family="SF Mono, Menlo, Monaco, Consolas, monospace" font-size="9" fill="#4a5072">
+    <text x="220" y="58">⊕</text>
+    <text x="250" y="58">1h</text>
+    <text x="280" y="58">4h</text>
+    <text x="310" y="58">D</text>
+    <text x="340" y="58">W</text>
+    <text x="370" y="58">▼</text>
+
+    <text x="430" y="58">⊙ Indicators</text>
+    <text x="540" y="58">Last</text>
+  </g>
+
+  <!-- OHLCV info -->
+  <text x="16" y="86" font-family="SF Mono, Menlo, Monaco, Consolas, monospace" font-size="9.5" fill="#4a5072">ETH-USD (Last) · 1h · Extended</text>
+  <g font-family="SF Mono, Menlo, Monaco, Consolas, monospace" font-size="9.5">
+    <text x="290" y="86" fill="#4a5072">O</text>
+    <text x="302" y="86" fill="#26a69a">3241.6</text>
+    <text x="348" y="86" fill="#4a5072">H</text>
+    <text x="360" y="86" fill="#26a69a">3252.8</text>
+    <text x="406" y="86" fill="#4a5072">L</text>
+    <text x="416" y="86" fill="#26a69a">3238.4</text>
+    <text x="462" y="86" fill="#4a5072">C</text>
+    <text x="474" y="86" fill="#26a69a">3247.8</text>
+    <text x="520" y="86" fill="#4a5072">+6.2 (+0.19%)</text>
+  </g>
+
+  <!-- ═══════════ CANDLESTICK CHART AREA ═══════════ -->
+  <!-- Y-axis price labels (right side) -->
+  <g font-family="SF Mono, Menlo, Monaco, Consolas, monospace" font-size="9" fill="#4a5072" text-anchor="end">
+    <text x="890" y="108">3,280</text>
+    <line x1="10" y1="104" x2="895" y2="104" stroke="rgba(255,255,255,0.03)" stroke-width="0.5"/>
+
+    <text x="890" y="158">3,260</text>
+    <line x1="10" y1="154" x2="895" y2="154" stroke="rgba(255,255,255,0.03)" stroke-width="0.5"/>
+
+    <text x="890" y="208">3,240</text>
+    <line x1="10" y1="204" x2="895" y2="204" stroke="rgba(255,255,255,0.03)" stroke-width="0.5"/>
+
+    <text x="890" y="258">3,220</text>
+    <line x1="10" y1="254" x2="895" y2="254" stroke="rgba(255,255,255,0.03)" stroke-width="0.5"/>
+
+    <text x="890" y="308">3,200</text>
+    <line x1="10" y1="304" x2="895" y2="304" stroke="rgba(255,255,255,0.03)" stroke-width="0.5"/>
+
+    <text x="890" y="358">3,180</text>
+    <line x1="10" y1="354" x2="895" y2="354" stroke="rgba(255,255,255,0.03)" stroke-width="0.5"/>
+
+    <text x="890" y="408">3,160</text>
+    <line x1="10" y1="404" x2="895" y2="404" stroke="rgba(255,255,255,0.03)" stroke-width="0.5"/>
+  </g>
+
+  <!-- Candlesticks - each is wick (line) + body (rect) -->
+  <!-- Candle 1: red -->
+  <line x1="80" y1="290" x2="80" y2="360" stroke="#ef5350" stroke-width="1"/>
+  <rect x="74" y="300" width="12" height="42" rx="1" fill="url(#redCandle)"/>
+
+  <!-- Candle 2: red -->
+  <line x1="110" y1="305" x2="110" y2="380" stroke="#ef5350" stroke-width="1"/>
+  <rect x="104" y="315" width="12" height="48" rx="1" fill="url(#redCandle)"/>
+
+  <!-- Candle 3: green -->
+  <line x1="140" y1="290" x2="140" y2="370" stroke="#26a69a" stroke-width="1"/>
+  <rect x="134" y="310" width="12" height="40" rx="1" fill="url(#greenCandle)"/>
+
+  <!-- Candle 4: green -->
+  <line x1="170" y1="270" x2="170" y2="340" stroke="#26a69a" stroke-width="1"/>
+  <rect x="164" y="280" width="12" height="36" rx="1" fill="url(#greenCandle)"/>
+
+  <!-- Candle 5: red -->
+  <line x1="200" y1="260" x2="200" y2="320" stroke="#ef5350" stroke-width="1"/>
+  <rect x="194" y="268" width="12" height="38" rx="1" fill="url(#redCandle)"/>
+
+  <!-- Candle 6: green -->
+  <line x1="230" y1="255" x2="230" y2="310" stroke="#26a69a" stroke-width="1"/>
+  <rect x="224" y="268" width="12" height="30" rx="1" fill="url(#greenCandle)"/>
+
+  <!-- Candle 7: green -->
+  <line x1="260" y1="240" x2="260" y2="290" stroke="#26a69a" stroke-width="1"/>
+  <rect x="254" y="252" width="12" height="26" rx="1" fill="url(#greenCandle)"/>
+
+  <!-- Candle 8: red (small) -->
+  <line x1="290" y1="238" x2="290" y2="270" stroke="#ef5350" stroke-width="1"/>
+  <rect x="284" y="242" width="12" height="18" rx="1" fill="url(#redCandle)"/>
+
+  <!-- Candle 9: green -->
+  <line x1="320" y1="230" x2="320" y2="268" stroke="#26a69a" stroke-width="1"/>
+  <rect x="314" y="238" width="12" height="20" rx="1" fill="url(#greenCandle)"/>
+
+  <!-- Candle 10: green -->
+  <line x1="350" y1="218" x2="350" y2="256" stroke="#26a69a" stroke-width="1"/>
+  <rect x="344" y="226" width="12" height="22" rx="1" fill="url(#greenCandle)"/>
+
+  <!-- Candle 11: red -->
+  <line x1="380" y1="216" x2="380" y2="258" stroke="#ef5350" stroke-width="1"/>
+  <rect x="374" y="222" width="12" height="28" rx="1" fill="url(#redCandle)"/>
+
+  <!-- Candle 12: green (doji) -->
+  <line x1="410" y1="212" x2="410" y2="252" stroke="#26a69a" stroke-width="1"/>
+  <rect x="404" y="228" width="12" height="8" rx="1" fill="url(#greenCandle)"/>
+
+  <!-- Candle 13: green -->
+  <line x1="440" y1="200" x2="440" y2="244" stroke="#26a69a" stroke-width="1"/>
+  <rect x="434" y="210" width="12" height="24" rx="1" fill="url(#greenCandle)"/>
+
+  <!-- Candle 14: green big -->
+  <line x1="470" y1="180" x2="470" y2="230" stroke="#26a69a" stroke-width="1"/>
+  <rect x="464" y="188" width="12" height="32" rx="1" fill="url(#greenCandle)"/>
+
+  <!-- Candle 15: red pullback -->
+  <line x1="500" y1="178" x2="500" y2="220" stroke="#ef5350" stroke-width="1"/>
+  <rect x="494" y="184" width="12" height="28" rx="1" fill="url(#redCandle)"/>
+
+  <!-- Candle 16: green -->
+  <line x1="530" y1="170" x2="530" y2="210" stroke="#26a69a" stroke-width="1"/>
+  <rect x="524" y="178" width="12" height="22" rx="1" fill="url(#greenCandle)"/>
+
+  <!-- Candle 17: green big push -->
+  <line x1="560" y1="148" x2="560" y2="196" stroke="#26a69a" stroke-width="1"/>
+  <rect x="554" y="156" width="12" height="30" rx="1" fill="url(#greenCandle)"/>
+
+  <!-- Candle 18: small red -->
+  <line x1="590" y1="146" x2="590" y2="180" stroke="#ef5350" stroke-width="1"/>
+  <rect x="584" y="152" width="12" height="20" rx="1" fill="url(#redCandle)"/>
+
+  <!-- Candle 19: green -->
+  <line x1="620" y1="138" x2="620" y2="172" stroke="#26a69a" stroke-width="1"/>
+  <rect x="614" y="144" width="12" height="18" rx="1" fill="url(#greenCandle)"/>
+
+  <!-- Candle 20: current green -->
+  <line x1="650" y1="132" x2="650" y2="166" stroke="#26a69a" stroke-width="1"/>
+  <rect x="644" y="138" width="12" height="20" rx="1" fill="url(#greenCandle)"/>
+
+  <!-- ═══════════ ACTIVE LIMIT ORDERS ON CHART ═══════════ -->
+  <!-- Buy orders (green) -->
+  <rect x="480" y="217" width="170" height="16" rx="2" fill="rgba(38,166,154,0.2)" stroke="#26a69a" stroke-width="0.8"/>
+  <text x="486" y="228" font-family="SF Mono, Menlo, Monaco, Consolas, monospace" font-size="8.5" fill="#26a69a" font-weight="600">Limit 3,241.1 USD</text>
+  <text x="600" y="228" font-family="SF Mono, Menlo, Monaco, Consolas, monospace" font-size="8.5" fill="#26a69a" font-weight="700">1.728 ETH</text>
+
+  <rect x="480" y="236" width="170" height="16" rx="2" fill="rgba(38,166,154,0.15)" stroke="#26a69a" stroke-width="0.6"/>
+  <text x="486" y="247" font-family="SF Mono, Menlo, Monaco, Consolas, monospace" font-size="8.5" fill="#26a69a" font-weight="600">Limit 3,238.9 USD</text>
+  <text x="600" y="247" font-family="SF Mono, Menlo, Monaco, Consolas, monospace" font-size="8.5" fill="#26a69a" font-weight="700">1.440 ETH</text>
+
+  <rect x="480" y="255" width="170" height="16" rx="2" fill="rgba(38,166,154,0.1)" stroke="#26a69a" stroke-width="0.5"/>
+  <text x="486" y="266" font-family="SF Mono, Menlo, Monaco, Consolas, monospace" font-size="8.5" fill="#26a69a" font-weight="600">Limit 3,236.5 USD</text>
+  <text x="600" y="266" font-family="SF Mono, Menlo, Monaco, Consolas, monospace" font-size="8.5" fill="#26a69a" font-weight="700">1.296 ETH</text>
+
+  <!-- Sell orders (red) -->
+  <rect x="480" y="148" width="170" height="16" rx="2" fill="rgba(239,83,80,0.2)" stroke="#ef5350" stroke-width="0.8"/>
+  <text x="486" y="159" font-family="SF Mono, Menlo, Monaco, Consolas, monospace" font-size="8.5" fill="#ef5350" font-weight="600">Limit 3,261.3 USD</text>
+  <text x="600" y="159" font-family="SF Mono, Menlo, Monaco, Consolas, monospace" font-size="8.5" fill="#ef5350" font-weight="700">1.113 ETH</text>
+
+  <rect x="480" y="130" width="170" height="16" rx="2" fill="rgba(239,83,80,0.15)" stroke="#ef5350" stroke-width="0.6"/>
+  <text x="486" y="141" font-family="SF Mono, Menlo, Monaco, Consolas, monospace" font-size="8.5" fill="#ef5350" font-weight="600">Limit 3,263.9 USD</text>
+  <text x="600" y="141" font-family="SF Mono, Menlo, Monaco, Consolas, monospace" font-size="8.5" fill="#ef5350" font-weight="700">1.602 ETH</text>
+
+  <!-- PnL indicator -->
+  <rect x="30" y="280" width="120" height="22" rx="4" fill="rgba(38,166,154,0.15)" stroke="#26a69a" stroke-width="0.8"/>
+  <text x="40" y="295" font-family="SF Mono, Menlo, Monaco, Consolas, monospace" font-size="10" fill="#26a69a" font-weight="700">PnL 12.41 USD</text>
+  <circle cx="136" cy="291" r="3" fill="#26a69a" filter="url(#mmGlow)"/>
+
+  <!-- Current price line -->
+  <line x1="10" y1="190" x2="660" y2="190" stroke="#3b82f6" stroke-width="0.8" stroke-dasharray="4 3" stroke-opacity="0.5"/>
+  <rect x="860" y="183" width="60" height="16" rx="3" fill="#3b82f6"/>
+  <text x="890" y="194" font-family="SF Mono, Menlo, Monaco, Consolas, monospace" font-size="9" fill="#ffffff" text-anchor="middle" font-weight="600">3,247.8</text>
+
+  <!-- Volume bars at bottom of chart -->
+  <g opacity="0.4">
+    <rect x="74" y="416" width="12" height="18" rx="1" fill="#ef5350"/>
+    <rect x="104" y="410" width="12" height="24" rx="1" fill="#ef5350"/>
+    <rect x="134" y="418" width="12" height="16" rx="1" fill="#26a69a"/>
+    <rect x="164" y="414" width="12" height="20" rx="1" fill="#26a69a"/>
+    <rect x="194" y="420" width="12" height="14" rx="1" fill="#ef5350"/>
+    <rect x="224" y="422" width="12" height="12" rx="1" fill="#26a69a"/>
+    <rect x="254" y="416" width="12" height="18" rx="1" fill="#26a69a"/>
+    <rect x="284" y="424" width="12" height="10" rx="1" fill="#ef5350"/>
+    <rect x="314" y="420" width="12" height="14" rx="1" fill="#26a69a"/>
+    <rect x="344" y="418" width="12" height="16" rx="1" fill="#26a69a"/>
+    <rect x="374" y="414" width="12" height="20" rx="1" fill="#ef5350"/>
+    <rect x="404" y="426" width="12" height="8" rx="1" fill="#26a69a"/>
+    <rect x="434" y="416" width="12" height="18" rx="1" fill="#26a69a"/>
+    <rect x="464" y="404" width="12" height="30" rx="1" fill="#26a69a"/>
+    <rect x="494" y="410" width="12" height="24" rx="1" fill="#ef5350"/>
+    <rect x="524" y="418" width="12" height="16" rx="1" fill="#26a69a"/>
+    <rect x="554" y="400" width="12" height="34" rx="1" fill="#26a69a"/>
+    <rect x="584" y="420" width="12" height="14" rx="1" fill="#ef5350"/>
+    <rect x="614" y="416" width="12" height="18" rx="1" fill="#26a69a"/>
+    <rect x="644" y="412" width="12" height="22" rx="1" fill="#26a69a"/>
+  </g>
+
+  <!-- X-axis time labels -->
+  <g font-family="SF Mono, Menlo, Monaco, Consolas, monospace" font-size="9" fill="#3a3f58" text-anchor="middle">
+    <text x="80" y="452">12:00</text>
+    <text x="200" y="452">16:00</text>
+    <text x="320" y="452">20:00</text>
+    <text x="440" y="452">24</text>
+    <text x="560" y="452">04:00</text>
+    <text x="650" y="452">08:00</text>
+  </g>
+
+  <!-- TradingView logo area -->
+  <g transform="translate(30,400)">
+    <rect width="24" height="24" rx="4" fill="rgba(255,255,255,0.06)"/>
+    <text x="12" y="16" font-family="SF Mono, Menlo, Monaco, Consolas, monospace" font-size="12" font-weight="700" fill="#4a5072" text-anchor="middle">Tv</text>
+  </g>
+
+  <!-- Bottom bar -->
+  <rect x="0" y="460" width="900" height="24" fill="#181c28"/>
+  <line x1="0" y1="460" x2="900" y2="460" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+  <g font-family="SF Mono, Menlo, Monaco, Consolas, monospace" font-size="9" fill="#3a3f58">
+    <text x="16" y="476">5y</text>
+    <text x="40" y="476">1y</text>
+    <text x="64" y="476">6m</text>
+    <text x="88" y="476">3m</text>
+    <text x="112" y="476">1m</text>
+    <text x="136" y="476">5d</text>
+    <text x="160" y="476">1d</text>
+    <text x="230" y="476">14:16:54 (UTC)</text>
+    <text x="380" y="476">%</text>
+    <text x="410" y="476">log</text>
+    <text x="450" y="476">auto</text>
+  </g>
+
+  <!-- ═══════════ ORDER BOOK (RIGHT PANEL) ═══════════ -->
+  <rect x="900" y="40" width="300" height="635" fill="#141822"/>
+  <line x1="900" y1="40" x2="900" y2="675" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+
+  <!-- Order book header -->
+  <g font-family="SF Mono, Menlo, Monaco, Consolas, monospace" font-size="9" fill="#4a5072">
+    <text x="920" y="58">PRICE</text>
+    <text x="1010" y="58">SIZE</text>
+    <text x="1100" y="58" text-anchor="end">ETH</text>
+    <text x="1180" y="58" text-anchor="end">TOTAL</text>
+  </g>
+  <line x1="910" y1="64" x2="1190" y2="64" stroke="rgba(255,255,255,0.05)" stroke-width="0.5"/>
+
+  <!-- Ask orders (red - sell side) -->
+  <g font-family="SF Mono, Menlo, Monaco, Consolas, monospace" font-size="10">
+    <!-- Depth visualization bars (red) -->
+    <rect x="910" y="72" width="200" height="16" fill="rgba(239,83,80,0.06)"/>
+    <text x="920" y="84" fill="#ef5350">3,272.0</text>
+    <text x="1020" y="84" fill="#e0e4f0">0.314</text>
+    <text x="1180" y="84" fill="#4a5072" text-anchor="end">1,028.2</text>
+
+    <rect x="910" y="90" width="180" height="16" fill="rgba(239,83,80,0.06)"/>
+    <text x="920" y="102" fill="#ef5350">3,270.4</text>
+    <text x="1020" y="102" fill="#e0e4f0">0.871</text>
+    <text x="1180" y="102" fill="#4a5072" text-anchor="end">2,847.7</text>
+
+    <rect x="910" y="108" width="160" height="16" fill="rgba(239,83,80,0.06)"/>
+    <text x="920" y="120" fill="#ef5350">3,268.1</text>
+    <text x="1020" y="120" fill="#e0e4f0">67.399</text>
+    <text x="1180" y="120" fill="#4a5072" text-anchor="end">470,338</text>
+
+    <rect x="910" y="126" width="140" height="16" fill="rgba(239,83,80,0.06)"/>
+    <text x="920" y="138" fill="#ef5350">3,265.6</text>
+    <text x="1020" y="138" fill="#e0e4f0">67.056</text>
+    <text x="1180" y="138" fill="#4a5072" text-anchor="end">302,257</text>
+
+    <rect x="910" y="144" width="120" height="16" fill="rgba(239,83,80,0.06)"/>
+    <text x="920" y="156" fill="#ef5350">3,263.9</text>
+    <text x="1020" y="156" fill="#e0e4f0">78.457</text>
+    <text x="1180" y="156" fill="#4a5072" text-anchor="end">312,062</text>
+
+    <rect x="910" y="162" width="100" height="16" fill="rgba(239,83,80,0.06)"/>
+    <text x="920" y="174" fill="#ef5350">3,261.3</text>
+    <text x="1020" y="174" fill="#e0e4f0">64.960</text>
+    <text x="1180" y="174" fill="#4a5072" text-anchor="end">233,803</text>
+
+    <rect x="910" y="180" width="80" height="16" fill="rgba(239,83,80,0.06)"/>
+    <text x="920" y="192" fill="#ef5350">3,258.8</text>
+    <text x="1020" y="192" fill="#e0e4f0">12.841</text>
+    <text x="1180" y="192" fill="#4a5072" text-anchor="end">41,853</text>
+
+    <rect x="910" y="198" width="60" height="16" fill="rgba(239,83,80,0.06)"/>
+    <text x="920" y="210" fill="#ef5350">3,256.2</text>
+    <text x="1020" y="210" fill="#e0e4f0">4.217</text>
+    <text x="1180" y="210" fill="#4a5072" text-anchor="end">13,733</text>
+  </g>
+
+  <!-- Spread indicator -->
+  <rect x="910" y="220" width="280" height="28" fill="rgba(255,255,255,0.02)"/>
+  <line x1="910" y1="220" x2="1190" y2="220" stroke="rgba(255,255,255,0.06)" stroke-width="0.5"/>
+  <line x1="910" y1="248" x2="1190" y2="248" stroke="rgba(255,255,255,0.06)" stroke-width="0.5"/>
+  <text x="920" y="238" font-family="SF Mono, Menlo, Monaco, Consolas, monospace" font-size="12" font-weight="700" fill="#e0e4f0">3,247.8</text>
+  <text x="1050" y="238" font-family="SF Mono, Menlo, Monaco, Consolas, monospace" font-size="9" fill="#4a5072">Spread 0.1</text>
+  <text x="1180" y="238" font-family="SF Mono, Menlo, Monaco, Consolas, monospace" font-size="9" fill="#4a5072" text-anchor="end">0.003%</text>
+
+  <!-- Bid orders (green - buy side) -->
+  <g font-family="SF Mono, Menlo, Monaco, Consolas, monospace" font-size="10">
+    <rect x="910" y="252" width="60" height="16" fill="rgba(38,166,154,0.06)"/>
+    <text x="920" y="264" fill="#26a69a">3,247.7</text>
+    <text x="1020" y="264" fill="#e0e4f0">0.400</text>
+    <text x="1180" y="264" fill="#4a5072" text-anchor="end">800</text>
+
+    <rect x="910" y="270" width="80" height="16" fill="rgba(38,166,154,0.06)"/>
+    <text x="920" y="282" fill="#26a69a">3,245.2</text>
+    <text x="1020" y="282" fill="#e0e4f0">1.840</text>
+    <text x="1180" y="282" fill="#4a5072" text-anchor="end">5,971</text>
+
+    <rect x="910" y="288" width="100" height="16" fill="rgba(38,166,154,0.06)"/>
+    <text x="920" y="300" fill="#26a69a">3,242.8</text>
+    <text x="1020" y="300" fill="#e0e4f0">40.236</text>
+    <text x="1180" y="300" fill="#4a5072" text-anchor="end">130,445</text>
+
+    <rect x="910" y="306" width="120" height="16" fill="rgba(38,166,154,0.06)"/>
+    <text x="920" y="318" fill="#26a69a">3,241.1</text>
+    <text x="1020" y="318" fill="#e0e4f0">8.456</text>
+    <text x="1180" y="318" fill="#4a5072" text-anchor="end">27,406</text>
+
+    <rect x="910" y="324" width="140" height="16" fill="rgba(38,166,154,0.06)"/>
+    <text x="920" y="336" fill="#26a69a">3,238.9</text>
+    <text x="1020" y="336" fill="#e0e4f0">26.397</text>
+    <text x="1180" y="336" fill="#4a5072" text-anchor="end">90,443</text>
+
+    <rect x="910" y="342" width="160" height="16" fill="rgba(38,166,154,0.06)"/>
+    <text x="920" y="354" fill="#26a69a">3,236.5</text>
+    <text x="1020" y="354" fill="#e0e4f0">0.683</text>
+    <text x="1180" y="354" fill="#4a5072" text-anchor="end">10,370</text>
+
+    <rect x="910" y="360" width="180" height="16" fill="rgba(38,166,154,0.06)"/>
+    <text x="920" y="372" fill="#26a69a">3,234.0</text>
+    <text x="1020" y="372" fill="#e0e4f0">14.221</text>
+    <text x="1180" y="372" fill="#4a5072" text-anchor="end">45,987</text>
+  </g>
+
+  <!-- Bottom section: Bid/Ask buttons -->
+  <rect x="910" y="590" width="135" height="34" rx="4" fill="rgba(38,166,154,0.15)" stroke="#26a69a" stroke-width="0.8"/>
+  <text x="978" y="608" font-family="SF Mono, Menlo, Monaco, Consolas, monospace" font-size="10" fill="#26a69a" font-weight="700" text-anchor="middle">Bid 22.59%</text>
+  <text x="978" y="620" font-family="SF Mono, Menlo, Monaco, Consolas, monospace" font-size="8" fill="#26a69a" text-anchor="middle" opacity="0.6">BUY</text>
+
+  <rect x="1055" y="590" width="135" height="34" rx="4" fill="rgba(239,83,80,0.15)" stroke="#ef5350" stroke-width="0.8"/>
+  <text x="1123" y="608" font-family="SF Mono, Menlo, Monaco, Consolas, monospace" font-size="10" fill="#ef5350" font-weight="700" text-anchor="middle">77.41%</text>
+  <text x="1123" y="620" font-family="SF Mono, Menlo, Monaco, Consolas, monospace" font-size="8" fill="#ef5350" text-anchor="middle" opacity="0.6">ASK</text>
+
+  <!-- Trading rules / Display bar -->
+  <rect x="900" y="490" width="300" height="24" fill="#1c2030"/>
+  <line x1="900" y1="490" x2="1200" y2="490" stroke="rgba(255,255,255,0.05)" stroke-width="0.5"/>
+  <g font-family="SF Mono, Menlo, Monaco, Consolas, monospace" font-size="8.5" fill="#3a3f58">
+    <text x="920" y="506">☆ Display</text>
+    <text x="1000" y="506">☆ Trading Rules</text>
+    <text x="1110" y="506">☆ Margin Schedule</text>
+  </g>
+
+  <!-- Recent trades section -->
+  <rect x="900" y="516" width="300" height="70" fill="rgba(255,255,255,0.01)"/>
+  <line x1="900" y1="516" x2="1200" y2="516" stroke="rgba(255,255,255,0.05)" stroke-width="0.5"/>
+  <text x="920" y="534" font-family="SF Mono, Menlo, Monaco, Consolas, monospace" font-size="9" fill="#4a5072" font-weight="600">RECENT FILLS</text>
+  <g font-family="SF Mono, Menlo, Monaco, Consolas, monospace" font-size="9">
+    <text x="920" y="552" fill="#26a69a">3,247.8</text>
+    <text x="1000" y="552" fill="#4a5072">0.142 ETH</text>
+    <text x="1140" y="552" fill="#3a3f58">14:16:51</text>
+
+    <text x="920" y="568" fill="#ef5350">3,247.5</text>
+    <text x="1000" y="568" fill="#4a5072">0.087 ETH</text>
+    <text x="1140" y="568" fill="#3a3f58">14:16:48</text>
+
+    <text x="920" y="584" fill="#26a69a">3,247.9</text>
+    <text x="1000" y="584" fill="#4a5072">0.331 ETH</text>
+    <text x="1140" y="584" fill="#3a3f58">14:16:42</text>
+  </g>
+
+  <!-- Bottom status -->
+  <rect x="900" y="640" width="300" height="35" fill="#181c28"/>
+  <line x1="900" y1="640" x2="1200" y2="640" stroke="rgba(255,255,255,0.05)" stroke-width="0.5"/>
+  <text x="920" y="660" font-family="SF Mono, Menlo, Monaco, Consolas, monospace" font-size="8.5" fill="#3a3f58">Layout: Save</text>
+  <text x="1180" y="660" font-family="SF Mono, Menlo, Monaco, Consolas, monospace" font-size="8.5" fill="#3a3f58" text-anchor="end">Extended Exchange</text>
+</svg>

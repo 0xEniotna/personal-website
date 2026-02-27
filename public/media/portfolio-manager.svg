@@ -1,0 +1,281 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675">
+  <defs>
+    <linearGradient id="sidebarGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1e2a3a"/>
+      <stop offset="100%" stop-color="#162030"/>
+    </linearGradient>
+    <linearGradient id="equityGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#3b82f6" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#3b82f6" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="donut1a" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#3b82f6"/>
+      <stop offset="100%" stop-color="#2563eb"/>
+    </linearGradient>
+    <linearGradient id="donut1b" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#60a5fa"/>
+      <stop offset="100%" stop-color="#93c5fd"/>
+    </linearGradient>
+    <linearGradient id="donut1c" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1e40af"/>
+      <stop offset="100%" stop-color="#1d4ed8"/>
+    </linearGradient>
+    <clipPath id="chartArea">
+      <rect x="218" y="244" width="732" height="206" rx="2"/>
+    </clipPath>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="675" fill="#f8f9fb" rx="6"/>
+
+  <!-- ═══════════ LEFT SIDEBAR ═══════════ -->
+  <rect x="0" y="0" width="178" height="675" fill="url(#sidebarGrad)" rx="6"/>
+  <rect x="6" y="0" width="172" height="675" fill="url(#sidebarGrad)"/>
+
+  <!-- App title -->
+  <text x="24" y="38" font-family="Inter, system-ui, sans-serif" font-size="14" font-weight="700" fill="#ffffff" letter-spacing="-0.01em">Portfolio Manager</text>
+
+  <!-- Nav items -->
+  <!-- Active: Dashboard -->
+  <rect x="12" y="58" width="154" height="34" rx="6" fill="#3b82f6"/>
+  <text x="42" y="80" font-family="Inter, system-ui, sans-serif" font-size="12.5" font-weight="600" fill="#ffffff">Dashboard</text>
+  <rect x="22" y="70" width="12" height="2" rx="1" fill="rgba(255,255,255,0.7)"/>
+  <rect x="22" y="74" width="8" height="2" rx="1" fill="rgba(255,255,255,0.7)"/>
+
+  <!-- Inactive items -->
+  <g font-family="Inter, system-ui, sans-serif" font-size="12.5" fill="rgba(255,255,255,0.55)">
+    <text x="42" y="116">Assets</text>
+    <circle cx="27" cy="112" r="5" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="1.2"/>
+
+    <text x="42" y="148">Transactions</text>
+    <rect x="22" y="140" width="10" height="10" rx="2" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="1.2"/>
+
+    <text x="42" y="180">Allocation</text>
+    <path d="M22 176 L32 176 L27 170 Z" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="1.2"/>
+
+    <text x="42" y="212">Risk Analytics</text>
+    <rect x="22" y="204" width="10" height="2" rx="1" fill="rgba(255,255,255,0.35)"/>
+    <rect x="22" y="208" width="7" height="2" rx="1" fill="rgba(255,255,255,0.35)"/>
+
+    <text x="42" y="244">BTC Cycles</text>
+    <circle cx="27" cy="240" r="4" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="1.2"/>
+    <line x1="27" y1="237" x2="27" y2="243" stroke="rgba(255,255,255,0.35)" stroke-width="1"/>
+  </g>
+
+  <!-- Sidebar bottom actions -->
+  <line x1="12" y1="530" x2="166" y2="530" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+  <g font-family="Inter, system-ui, sans-serif" font-size="11" fill="rgba(255,255,255,0.4)">
+    <circle cx="27" cy="554" r="3" fill="rgba(255,255,255,0.25)"/>
+    <text x="42" y="558">Disable Spy Mode</text>
+
+    <circle cx="27" cy="580" r="3" fill="rgba(255,255,255,0.25)"/>
+    <text x="42" y="584">Dark Mode</text>
+
+    <circle cx="27" cy="606" r="3" fill="rgba(255,255,255,0.25)"/>
+    <text x="42" y="610">Refresh Data</text>
+
+    <circle cx="27" cy="632" r="3" fill="rgba(255,255,255,0.25)"/>
+    <text x="42" y="636">Sign Out</text>
+  </g>
+
+  <text x="24" y="664" font-family="Inter, system-ui, sans-serif" font-size="9.5" fill="rgba(255,255,255,0.2)">admin@example.com</text>
+
+  <!-- ═══════════ MAIN CONTENT ═══════════ -->
+  <!-- Page title -->
+  <text x="208" y="40" font-family="Inter, system-ui, sans-serif" font-size="22" font-weight="700" fill="#1a2332" letter-spacing="-0.02em">Dashboard</text>
+
+  <!-- ═══════════ METRIC CARDS ROW ═══════════ -->
+  <!-- Total Value card -->
+  <rect x="208" y="60" width="244" height="78" rx="10" fill="#ffffff" stroke="#e5e7eb" stroke-width="1"/>
+  <text x="228" y="84" font-family="Inter, system-ui, sans-serif" font-size="11" fill="#94a3b8" font-weight="500">Total Value</text>
+  <text x="228" y="114" font-family="SF Mono, Menlo, Monaco, Consolas, monospace" font-size="24" font-weight="700" fill="#1a2332" letter-spacing="-0.02em">€247,832</text>
+  <text x="228" y="130" font-family="Inter, system-ui, sans-serif" font-size="10.5" fill="#94a3b8">Cost basis: €214,590</text>
+  <!-- Small chart icon -->
+  <rect x="418" y="74" width="20" height="14" rx="2" fill="#eff6ff" stroke="#bfdbfe" stroke-width="0.5"/>
+  <polyline points="421,85 425,80 429,83 433,77 435,79" fill="none" stroke="#3b82f6" stroke-width="1.2" stroke-linecap="round"/>
+
+  <!-- Unrealized P&L card -->
+  <rect x="466" y="60" width="244" height="78" rx="10" fill="#ffffff" stroke="#e5e7eb" stroke-width="1"/>
+  <text x="486" y="84" font-family="Inter, system-ui, sans-serif" font-size="11" fill="#94a3b8" font-weight="500">Unrealized P&amp;L</text>
+  <text x="486" y="114" font-family="SF Mono, Menlo, Monaco, Consolas, monospace" font-size="24" font-weight="700" fill="#10b981" letter-spacing="-0.02em">+€33,242</text>
+  <text x="486" y="130" font-family="Inter, system-ui, sans-serif" font-size="10.5" fill="#10b981" font-weight="600">+15.49%</text>
+  <!-- Up arrow indicator -->
+  <rect x="676" y="74" width="20" height="14" rx="2" fill="#ecfdf5" stroke="#a7f3d0" stroke-width="0.5"/>
+  <path d="M683,85 L686,78 L689,85" fill="none" stroke="#10b981" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Assets card -->
+  <rect x="724" y="60" width="244" height="78" rx="10" fill="#ffffff" stroke="#e5e7eb" stroke-width="1"/>
+  <text x="744" y="84" font-family="Inter, system-ui, sans-serif" font-size="11" fill="#94a3b8" font-weight="500">Assets</text>
+  <text x="744" y="118" font-family="SF Mono, Menlo, Monaco, Consolas, monospace" font-size="32" font-weight="700" fill="#1a2332">13</text>
+  <text x="744" y="130" font-family="Inter, system-ui, sans-serif" font-size="10.5" fill="#94a3b8">Active positions</text>
+  <rect x="934" y="74" width="20" height="14" rx="2" fill="#eff6ff" stroke="#bfdbfe" stroke-width="0.5"/>
+  <rect x="938" y="79" width="3" height="6" rx="1" fill="#3b82f6"/>
+  <rect x="943" y="77" width="3" height="8" rx="1" fill="#3b82f6"/>
+  <rect x="948" y="81" width="3" height="4" rx="1" fill="#3b82f6"/>
+
+  <!-- ═══════════ EQUITY CURVE CHART ═══════════ -->
+  <rect x="208" y="156" width="752" height="304" rx="10" fill="#ffffff" stroke="#e5e7eb" stroke-width="1"/>
+
+  <text x="228" y="184" font-family="Inter, system-ui, sans-serif" font-size="15" font-weight="700" fill="#1a2332">Equity Curve</text>
+
+  <!-- Time period buttons -->
+  <g font-family="Inter, system-ui, sans-serif" font-size="10" font-weight="600">
+    <rect x="782" y="170" width="32" height="22" rx="4" fill="#f1f5f9"/>
+    <text x="798" y="185" fill="#94a3b8" text-anchor="middle">1W</text>
+
+    <rect x="818" y="170" width="32" height="22" rx="4" fill="#f1f5f9"/>
+    <text x="834" y="185" fill="#94a3b8" text-anchor="middle">1M</text>
+
+    <rect x="854" y="170" width="32" height="22" rx="4" fill="#f1f5f9"/>
+    <text x="870" y="185" fill="#94a3b8" text-anchor="middle">3M</text>
+
+    <rect x="890" y="170" width="32" height="22" rx="4" fill="#3b82f6"/>
+    <text x="906" y="185" fill="#ffffff" text-anchor="middle">1Y</text>
+
+    <rect x="926" y="170" width="32" height="22" rx="4" fill="#f1f5f9"/>
+    <text x="942" y="185" fill="#94a3b8" text-anchor="middle">ALL</text>
+  </g>
+
+  <!-- Chart grid -->
+  <g clip-path="url(#chartArea)">
+    <!-- Horizontal grid lines -->
+    <line x1="218" y1="270" x2="950" y2="270" stroke="#f1f5f9" stroke-width="1"/>
+    <line x1="218" y1="310" x2="950" y2="310" stroke="#f1f5f9" stroke-width="1"/>
+    <line x1="218" y1="350" x2="950" y2="350" stroke="#f1f5f9" stroke-width="1"/>
+    <line x1="218" y1="390" x2="950" y2="390" stroke="#f1f5f9" stroke-width="1"/>
+    <line x1="218" y1="430" x2="950" y2="430" stroke="#f1f5f9" stroke-width="1"/>
+
+    <!-- Equity fill -->
+    <path d="M240,420 L270,418 L300,415 L330,416 L360,414 L390,413 L420,412 L450,410 L480,408 L510,405 L540,402 L570,398 L600,392 L630,385 L660,378 L690,368 L720,355 L740,342 L755,330 L770,318 L785,310 L800,305 L815,298 L830,290 L845,280 L860,268 L875,260 L890,252 L905,248 L920,245 L935,242 L940,241 L940,450 L240,450 Z" fill="url(#equityGrad)"/>
+
+    <!-- Equity line - flat then strong uptick (matching the original pattern) -->
+    <polyline
+      points="240,420 270,418 300,415 330,416 360,414 390,413 420,412 450,410 480,408 510,405 540,402 570,398 600,392 630,385 660,378 690,368 720,355 740,342 755,330 770,318 785,310 800,305 815,298 830,290 845,280 860,268 875,260 890,252 905,248 920,245 935,242 940,241"
+      fill="none"
+      stroke="#3b82f6"
+      stroke-width="2"
+      stroke-linejoin="round"
+      stroke-linecap="round"
+    />
+
+    <!-- Current value dot -->
+    <circle cx="940" cy="241" r="4" fill="#3b82f6" stroke="#ffffff" stroke-width="2"/>
+  </g>
+
+  <!-- Y-axis labels -->
+  <g font-family="SF Mono, Menlo, Monaco, Consolas, monospace" font-size="9" fill="#94a3b8" text-anchor="end">
+    <text x="232" y="252">€250K</text>
+    <text x="232" y="274">€240K</text>
+    <text x="232" y="314">€230K</text>
+    <text x="232" y="354">€220K</text>
+    <text x="232" y="394">€215K</text>
+    <text x="232" y="434">€210K</text>
+  </g>
+
+  <!-- X-axis labels -->
+  <g font-family="Inter, system-ui, sans-serif" font-size="9" fill="#94a3b8" text-anchor="middle">
+    <text x="270" y="460">Mar</text>
+    <text x="360" y="460">Apr</text>
+    <text x="450" y="460">May</text>
+    <text x="540" y="460">Jun</text>
+    <text x="630" y="460">Jul</text>
+    <text x="720" y="460">Aug</text>
+    <text x="800" y="460">Sep</text>
+    <text x="860" y="460">Oct</text>
+    <text x="920" y="460">Nov</text>
+  </g>
+
+  <!-- ═══════════ DONUT CHARTS ROW ═══════════ -->
+  <!-- By Asset -->
+  <rect x="208" y="478" width="244" height="184" rx="10" fill="#ffffff" stroke="#e5e7eb" stroke-width="1"/>
+  <text x="228" y="504" font-family="Inter, system-ui, sans-serif" font-size="14" font-weight="700" fill="#1a2332">By Asset</text>
+
+  <!-- Donut chart 1 -->
+  <g transform="translate(330,588)">
+    <!-- Background ring -->
+    <circle cx="0" cy="0" r="48" fill="none" stroke="#f1f5f9" stroke-width="18"/>
+    <!-- Bitcoin segment: 28.2% = ~101.5deg -->
+    <circle cx="0" cy="0" r="48" fill="none" stroke="url(#donut1a)" stroke-width="18" stroke-dasharray="85 216" stroke-dashoffset="75" stroke-linecap="round"/>
+    <!-- ETH segment: 22% = ~79deg -->
+    <circle cx="0" cy="0" r="48" fill="none" stroke="url(#donut1b)" stroke-width="18" stroke-dasharray="66 235" stroke-dashoffset="-10" stroke-linecap="round"/>
+    <!-- Gold segment: 18% -->
+    <circle cx="0" cy="0" r="48" fill="none" stroke="#fbbf24" stroke-width="18" stroke-dasharray="54 247" stroke-dashoffset="-76" stroke-linecap="round"/>
+    <!-- Other segment: rest -->
+    <circle cx="0" cy="0" r="48" fill="none" stroke="url(#donut1c)" stroke-width="18" stroke-dasharray="72 229" stroke-dashoffset="-130" stroke-linecap="round"/>
+    <!-- Remaining thin -->
+    <circle cx="0" cy="0" r="48" fill="none" stroke="#94a3b8" stroke-width="18" stroke-dasharray="24 277" stroke-dashoffset="-202" stroke-linecap="round" stroke-opacity="0.3"/>
+  </g>
+
+  <!-- Legend -->
+  <g font-family="Inter, system-ui, sans-serif" font-size="9.5" transform="translate(228,546)">
+    <circle cx="4" cy="0" r="3.5" fill="#3b82f6"/>
+    <text x="14" y="4" fill="#64748b">Bitcoin</text>
+    <text x="62" y="4" fill="#1a2332" font-weight="600">28.2%</text>
+
+    <circle cx="4" cy="18" r="3.5" fill="#60a5fa"/>
+    <text x="14" y="22" fill="#64748b">Ethereum</text>
+    <text x="72" y="22" fill="#1a2332" font-weight="600">22.0%</text>
+
+    <circle cx="4" cy="36" r="3.5" fill="#fbbf24"/>
+    <text x="14" y="40" fill="#64748b">Gold</text>
+    <text x="46" y="40" fill="#1a2332" font-weight="600">18.4%</text>
+  </g>
+
+  <!-- By Asset Class -->
+  <rect x="466" y="478" width="244" height="184" rx="10" fill="#ffffff" stroke="#e5e7eb" stroke-width="1"/>
+  <text x="486" y="504" font-family="Inter, system-ui, sans-serif" font-size="14" font-weight="700" fill="#1a2332">By Asset Class</text>
+
+  <g transform="translate(588,588)">
+    <circle cx="0" cy="0" r="48" fill="none" stroke="#f1f5f9" stroke-width="18"/>
+    <!-- Crypto: 49.9% -->
+    <circle cx="0" cy="0" r="48" fill="none" stroke="#3b82f6" stroke-width="18" stroke-dasharray="150 151" stroke-dashoffset="75" stroke-linecap="round"/>
+    <!-- Equities: 22% -->
+    <circle cx="0" cy="0" r="48" fill="none" stroke="#60a5fa" stroke-width="18" stroke-dasharray="66 235" stroke-dashoffset="-75" stroke-linecap="round"/>
+    <!-- Commodities: 18.4% -->
+    <circle cx="0" cy="0" r="48" fill="none" stroke="#fbbf24" stroke-width="18" stroke-dasharray="55 246" stroke-dashoffset="-141" stroke-linecap="round"/>
+    <!-- Cash: 9.7% -->
+    <circle cx="0" cy="0" r="48" fill="none" stroke="#94a3b8" stroke-width="18" stroke-dasharray="29 272" stroke-dashoffset="-196" stroke-linecap="round" stroke-opacity="0.4"/>
+  </g>
+
+  <g font-family="Inter, system-ui, sans-serif" font-size="9.5" transform="translate(486,546)">
+    <circle cx="4" cy="0" r="3.5" fill="#3b82f6"/>
+    <text x="14" y="4" fill="#64748b">Crypto</text>
+    <text x="56" y="4" fill="#1a2332" font-weight="600">49.9%</text>
+
+    <circle cx="4" cy="18" r="3.5" fill="#60a5fa"/>
+    <text x="14" y="22" fill="#64748b">Equities</text>
+    <text x="66" y="22" fill="#1a2332" font-weight="600">22.0%</text>
+
+    <circle cx="4" cy="36" r="3.5" fill="#fbbf24"/>
+    <text x="14" y="40" fill="#64748b">Commodities</text>
+    <text x="84" y="40" fill="#1a2332" font-weight="600">18.4%</text>
+  </g>
+
+  <!-- By Currency -->
+  <rect x="724" y="478" width="244" height="184" rx="10" fill="#ffffff" stroke="#e5e7eb" stroke-width="1"/>
+  <text x="744" y="504" font-family="Inter, system-ui, sans-serif" font-size="14" font-weight="700" fill="#1a2332">By Currency</text>
+
+  <g transform="translate(846,588)">
+    <circle cx="0" cy="0" r="48" fill="none" stroke="#f1f5f9" stroke-width="18"/>
+    <!-- USD: 73.2% -->
+    <circle cx="0" cy="0" r="48" fill="none" stroke="#3b82f6" stroke-width="18" stroke-dasharray="220 81" stroke-dashoffset="75" stroke-linecap="round"/>
+    <!-- EUR: 18.6% -->
+    <circle cx="0" cy="0" r="48" fill="none" stroke="#60a5fa" stroke-width="18" stroke-dasharray="56 245" stroke-dashoffset="-145" stroke-linecap="round"/>
+    <!-- Other: 8.2% -->
+    <circle cx="0" cy="0" r="48" fill="none" stroke="#94a3b8" stroke-width="18" stroke-dasharray="25 276" stroke-dashoffset="-201" stroke-linecap="round" stroke-opacity="0.4"/>
+  </g>
+
+  <g font-family="Inter, system-ui, sans-serif" font-size="9.5" transform="translate(744,546)">
+    <circle cx="4" cy="0" r="3.5" fill="#3b82f6"/>
+    <text x="14" y="4" fill="#64748b">USD</text>
+    <text x="42" y="4" fill="#1a2332" font-weight="600">73.2%</text>
+
+    <circle cx="4" cy="18" r="3.5" fill="#60a5fa"/>
+    <text x="14" y="22" fill="#64748b">EUR</text>
+    <text x="42" y="22" fill="#1a2332" font-weight="600">18.6%</text>
+
+    <circle cx="4" cy="36" r="3.5" fill="#94a3b8" opacity="0.4"/>
+    <text x="14" y="40" fill="#64748b">Other</text>
+    <text x="50" y="40" fill="#1a2332" font-weight="600">8.2%</text>
+  </g>
+</svg>
