@@ -21,7 +21,7 @@
     ],
     "showcase": {
       "mode": "image",
-      "imageSrc": "/media/portoflio.png",
+      "imageSrc": "/media/portfolio-manager.svg",
       "imageAlt": "Portfolio Manager dashboard preview",
       "caption": "Portfolio Manager interface preview",
       "aspect": "16:9"
@@ -49,7 +49,7 @@
     ],
     "showcase": {
       "mode": "image",
-      "imageSrc": "/media/marketmaker.png",
+      "imageSrc": "/media/market-maker.svg",
       "imageAlt": "Extended Market Maker interface preview",
       "caption": "Market maker monitoring preview",
       "aspect": "16:9"
